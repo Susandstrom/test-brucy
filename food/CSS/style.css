@@ -1,34 +1,38 @@
 body{
     font-family: Arial, Helvetica, sans-serif;
-    background-color: #f5f5f5;
+    background-color: #eff5ef;
     text-align: center;
     margin: 0;
     padding: 0;
 }
 
+/*texter*/
 h1{
     margin-top: 40px;
-    margin-bottom: 20px;
+    margin-bottom: 40px;
     display: flex;
     justify-content: center;
 }
 
-h3{
-    margin-top: 40px;
-    margin-bottom: 20px;
-    display: flex;
-    justify-content: center;
-}
 p{
-    margin-top: 40px;
-    margin-bottom: 20px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+
     display: flex;
     justify-content: center;
+    text-align: center;
 }
 
+/*Listor*/
+ul{
+    list-style: none;
+    text-align: center;
+}
+
+/*Menyn på startsidan*/
 .menu{
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     margin-top: 40px;
     gap: 40px;
@@ -57,6 +61,29 @@ p{
     transform: scale(1.05);
 }
 
-ul{
-    list-style: none;
+
+/*Tillbaka-knappen*/
+.back-button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 40px;
+    gap: 40px;
 }
+
+.back-link{
+    text-decoration: none;
+    background-color: white;
+
+    padding: 20px;
+    box-sizing: border-box;
+
+    width: 200px;
+    height: 100px;
+    border-radius: 20px;
+    color: black;
+    font-size: 20px;
+    box-shadow: 0 4px 8px rgb(0, 0, 0, 0.2);
+    text-align: center;
+}
+
