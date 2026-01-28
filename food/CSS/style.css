@@ -6,51 +6,50 @@ body{
     padding: 0;
 }
 
+main {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 20px 40px 20px;
+}
+
 /*texter*/
 h1{
     margin-top: 40px;
     margin-bottom: 40px;
-    display: flex;
-    justify-content: center;
 }
 
-p{
-    margin-top: 20px;
-    margin-bottom: 20px;
-
-    display: flex;
-    justify-content: center;
-    text-align: center;
-}
-
-/*Listor*/
 ul{
     list-style: none;
-    text-align: center;
+}
+
+li{
+    list-style: none;
 }
 
 /*Menyn på startsidan*/
 .menu{
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 40px;
-    margin-bottom: 40px;
+    justify-content: center;
+    flex-wrap: wrap;
     gap: 40px;
+    margin: 40px 0;
 }
 
 .card{
+    border-top: 40px;
+    border-bottom: 40px;
     text-decoration: none;
     background-color: white;
 
-    width: 200px;
-    height: 150px;
+    width: 300px;
+    min-height: 120px;
+    height: auto;
     /* card storlek*/
 
     padding: 20px;
     box-sizing: border-box;
 
-    border-radius: 10px;
+    border-radius: 30px;
     color: black;
     font-size: 20px;
     box-shadow: 0 4px 8px rgb(0, 0, 0, 0.2);
@@ -66,7 +65,7 @@ ul{
 /*Tillbaka-knappen*/
 .back-button{
     display: flex;
-    justify-content: center;
+    justify-content: left;
     align-items: center;
     margin-top: 40px;
     gap: 40px;
@@ -79,19 +78,47 @@ ul{
     padding: 20px;
     box-sizing: border-box;
 
-    width: 200px;
-    height: 100px;
-    border-radius: 20px;
+    width: 300px;
+    height: 60px;
+    border-radius: 30px;
     color: black;
     font-size: 20px;
     box-shadow: 0 4px 8px rgb(0, 0, 0, 0.2);
     text-align: center;
 }
 
-.receptet{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 40px;
-    gap: 40px;
+/*recept stil*/
+.recipe-layout{
+    display: grid;
+    grid-template-columns: 2fr 1fr; /*2fr =texten 1fr=bilden*/
+    gap:30px;
+    align-items: start;
+    margin-top: 30px;
+}
+
+.recipe-text{
+    text-align: left;
+}
+
+.recipe-text h2{
+    margin-top: 0;
+}
+
+.recipe-image img{
+    width: 100%;
+    border-radius: 12px;
+}
+.recipe-text ul,
+.recipe-text ol {
+    padding-left: 20px;
+}
+
+.recipe-text li{
+    margin-bottom: 8px;
+}
+/*Mobilanpassat*/
+@media (max-width: 768px) {
+    .recipe-layout{
+        grid-template-columns: 1fr;
+    }
 }
