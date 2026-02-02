@@ -35,7 +35,7 @@ const Menu = () => {
             Fredriks Burgare
           </h3>
           <p className="mt-2 text-sm text-gray-500">
-            Juicy homemade burgers 🍔
+            Hemgjord på några minuter
           </p>
         </Link>
 
@@ -47,7 +47,7 @@ const Menu = () => {
             Elviras Biryani
           </h3>
           <p className="mt-2 text-sm text-gray-500">
-            Spicy & aromatic rice 🍚
+            Sätt lite kryddning på vardagen
           </p>
         </Link>
 
@@ -59,7 +59,7 @@ const Menu = () => {
             Klings Korvstroganof
           </h3>
           <p className="mt-2 text-sm text-gray-500">
-            Classic Swedish comfort food 🇸🇪
+            En svensk klassiker direkt från hjärtat
           </p>
         </Link>
       </div>
