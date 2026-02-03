@@ -24,6 +24,9 @@ export default function Navbar() {
           <Link href="/biryani" className="hover:text-gray-900">
             Biryani
           </Link>
+          <Link href="/contact" className="hover:text-gray-900">
+            Contact
+          </Link>
         </div>
 
       </div>
