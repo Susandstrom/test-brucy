@@ -12,7 +12,7 @@ export default function HamburgerPage() {
             Fredriks Hamburgare
           </h1>
           <p className="text-gray-600 text-lg">
-            Gott på några minuter
+            Gott på några minuter, enkelt att göra till en fredagkväll!
           </p>
 
           {/* Ingredienser */}
@@ -26,6 +26,7 @@ export default function HamburgerPage() {
               <li>Vitlökspulver</li>
               <li>Lökpulver</li>
               <li>Paprikapulver</li>
+              <li>Klick smör till stekning</li>
             </ul>
           </div>
 
@@ -36,6 +37,7 @@ export default function HamburgerPage() {
               <li>Sirap/Socker</li>
               <li>Vitpeppar</li>
               <li>Salt</li>
+              <li>Klick smör till stekning</li>
             </ul>
           </div>
 
@@ -46,17 +48,21 @@ export default function HamburgerPage() {
               <li>Tomat</li>
               <li>Sallad</li>
               <li>Bacon</li>
+              <li>Hamburgarbröd</li>
+              <li>Gurka/Pickles</li>
             </ul>
           </div>
 
           {/* Instruktioner */}
-          <div>
-            <h2 className="text-2xl font-semibold text-gray-800 mb-3">Instruktioner</h2>
+        <div className="mt-8 text-left">
+            <h2 className="text-xl font-semibold text-gray-800 mb-3">Instruktioner</h2>
             <ol className="list-decimal list-inside text-gray-600 space-y-2">
               <li>Blanda nötfärsen med peppar, vitlökspulver, lökpulver, paprikapulver, salt och ägg till biffar.</li>
               <li>Skiva löken och stek den i smör, sirap, socker, vitpeppar och salt.</li>
               <li>Stek löken tills den mjuknat och fått färg. Lägg åt sidan och stek sedan stek baconet krispigt och lägg åt sidan. </li>
-              <li></li>
+              <li>Skiva tomaten och andra tillbehör. Lägg också dessa åt sidan.</li>
+              <li>Lägg en klick smör i stekpannan och lägg i hamburgarna när smöret smält. Stek den i ca 2minuter på varje sida.</li>
+              <li>Ta fram ditt bröd och sätt ihop din hamburgare, Klart!</li>
             </ol>
           </div>
 
