@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function KorvstroganofPage() {
   return (
     <main className="min-h-screen bg-[#eff5ef] px-4 py-12">
@@ -27,7 +29,7 @@ export default function KorvstroganofPage() {
           {/* Kokt Ris */}
           <div>
             <h2 className="text-2xl font-semibold text-gray-800 mb-3">Kokt Ris</h2>
-            <ul className="list-decimal list-inside text-gray-600 space-y-1">
+            <ul className="list-disc list-inside text-gray-600 space-y-1">
               <li>3 dl Ris</li>
               <li>6 dl Vatten</li>
               <li>1 tsk Salt</li>
@@ -49,9 +51,15 @@ export default function KorvstroganofPage() {
 
           {/* Back button */}
           <div className="mt-6">
-            <button className="rounded-2xl bg-white border border-gray-300 px-8 py-3 font-semibold shadow-md text-gray-700 hover:bg-gray-100 transition">
-              Back to menu
-            </button>
+            <div className="mt-6">
+            <Link
+            href="/hem"
+            className="inline-block rounded-2xl bg-white border border-gray-300 px-8 py-3 font-semibold shadow-md text-gray-700 hover:bg-gray-100 transition"
+            >
+            Back to menu
+            </Link>
+</div>
+
           </div>
         </div>
 
