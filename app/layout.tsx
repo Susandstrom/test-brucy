@@ -1,17 +1,21 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Barlow, Barlow_Condensed } from "next/font/google";
 import "./globals.css";
 import Navbar from "./components/navbar";
 import Footer from "./components/footer";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+/* Brödtext */
+const barlow = Barlow({
   subsets: ["latin"],
+  weight: ["400", "600", "700"],
+  variable: "--font-barlow",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+/* Rubriker */
+const barlowCondensed = Barlow_Condensed({
   subsets: ["latin"],
+  weight: ["400", "600", "700"],
+  variable: "--font-barlow-condensed",
 });
 
 export const metadata: Metadata = {
@@ -27,7 +31,11 @@ export default function RootLayout({
   return (
     <html lang="sv">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} bg-[#eff5ef] flex flex-col min-h-screen`}
+        className={`
+          ${barlow.variable}
+          ${barlowCondensed.variable}
+          bg-[#eff5ef] flex flex-col min-h-screen
+        `}
       >
         <Navbar />
         <main className="flex-grow">{children}</main>

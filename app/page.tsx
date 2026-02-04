@@ -2,39 +2,48 @@ import Link from "next/link";
 
 export default function HomePage() {
   return (
-    <div className="max-w-5xl mx-auto px-4 py-10">
-      <h1 className="text-3xl font-bold mb-8 text-center">
-        Receptboken
-      </h1>
+    <main className="min-h-screen bg-[#eff5ef]">
+      <div className="relative h-[300px] md:h-[400px] w-full">
+         <img
+          src="/images/strawberries.jpg"
+          alt="Strawberries"
+          className="h-full w-full object-cover"
+        />
+        <div className="absolute inset-0 bg-white/30 flex items-center justify-center">
+        <h1 className="text-5xl font-bold mb-8 text-center">
+          Receptboken
+        </h1>
+        </div>
 
-      <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3">
-        <Link
-          href="/hamburger"
-          className="group rounded-2xl border border-gray-200 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-lg"
-        >
-          <h3 className="text-xl font-semibold group-hover:text-orange-600">
-            Fredriks Burgare
-          </h3>
-        </Link>
+        <div className="grid gap-6 sm:grid-cols-3 md:grid-cols-3">
+          <Link
+            href="/hamburger"
+            className="group rounded-2xl border border-gray-200 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-lg"
+          >
+            <h3 className="text-xl font-semibold group-hover:text-orange-600">
+              Fredriks Burgare
+            </h3>
+          </Link>
 
-        <Link
-          href="/biryani"
-          className="group rounded-2xl border border-gray-200 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-lg"
-        >
-          <h3 className="text-xl font-semibold group-hover:text-orange-600">
-            Elviras Biryani
-          </h3>
-        </Link>
+          <Link
+            href="/biryani"
+            className="group rounded-2xl border border-gray-200 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-lg"
+          >
+            <h3 className="text-xl font-semibold group-hover:text-orange-600">
+              Elviras Biryani
+            </h3>
+          </Link>
 
-        <Link
-          href="/korvstroganof"
-          className="group rounded-2xl border border-gray-200 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-lg"
-        >
-          <h3 className="text-xl font-semibold group-hover:text-orange-600">
-            Klings Korvstroganof
-          </h3>
-        </Link>
+          <Link
+            href="/korvstroganof"
+            className="group rounded-2xl border border-gray-200 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-lg"
+          >
+            <h3 className="text-xl font-semibold group-hover:text-orange-600">
+              Klings Korvstroganof
+            </h3>
+          </Link>
+        </div>
       </div>
-    </div>
+    </main>
   );
 }

@@ -25,7 +25,7 @@ export default function Navbar() {
             Biryani
           </Link>
           <Link href="/contact" className="hover:text-gray-900">
-            Contact
+            Kontakta oss
           </Link>
         </div>
 

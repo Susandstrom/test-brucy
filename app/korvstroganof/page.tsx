@@ -11,7 +11,8 @@ export default function KorvstroganofPage() {
                         Klings Korvstroganof
                     </h1>
                     <p className="text-gray-600 text-lg">
-                        En svensk klassiker direkt från hjärtat
+                        En svensk klassiker direkt från hjärtat!
+                        Passar till den vardagliga familjemiddagen. 
                     </p>
 
                     {/* Ingredienser */}
@@ -53,7 +54,7 @@ export default function KorvstroganofPage() {
                     <div className="mt-6">
                         <div className="mt-6">
                             <Link
-                                href="/hem"
+                                href="/"
                                 className="inline-block rounded-2xl bg-white border border-gray-300 px-8 py-3 font-semibold shadow-md text-gray-700 hover:bg-gray-100 transition"
                             >
                                 Back to menu
@@ -66,12 +67,12 @@ export default function KorvstroganofPage() {
                 {/* Höger: Bild */}
                 <div className="flex-1 flex flex-col items-center justify-center gap-6">
                     <img
-                        src="/images/IMG_0096-1024x683.jpg"
+                        src="/images/stroganof.jpg"
                         alt="Korvstroganof"
                         className="rounded-2xl shadow-md object-cover max-h-[400px] w-full"
                     />
                       <img
-                        src="/images/img_4446.webp"
+                        src="/images/falukorv.jpg"
                         alt="Korvstroganof"
                         className="rounded-2xl shadow-md object-cover max-h-[400px] w-full"
                     />
