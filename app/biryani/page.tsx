@@ -89,8 +89,7 @@ export default function BiryaniPage() {
               <li>Låt vila 10 minuter före servering.</li>
             </ol>
           </div>
-
-          {/* Back */}
+            {/* Back */}
           <div className="mt-8">
             <Link
               href="/"
@@ -109,7 +108,6 @@ export default function BiryaniPage() {
         >
           ← Föregående recept
         </Link>
-
         <Link
           href="/korvstroganof"
           className="px-6 py-3 rounded-full bg-white border shadow-md text-gray-700 font-semibold hover:bg-gray-100 transition"

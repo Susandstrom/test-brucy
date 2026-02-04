@@ -89,8 +89,9 @@ export default function ContactPage() {
               Skicka
             </button>
           </form>
-
-          <div className="mt-6 text-center">
+        </div>
+      </div>
+       <div className="mt-6 text-center">
             <Link
               href="/"
               className="inline-block rounded-2xl bg-white border border-gray-300 px-6 py-3 font-semibold shadow-md hover:bg-gray-100 transition"
@@ -98,9 +99,6 @@ export default function ContactPage() {
               Back to menu
             </Link>
           </div>
-
-        </div>
-      </div>
     </main>
   );
 }
