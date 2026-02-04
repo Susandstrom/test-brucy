@@ -12,7 +12,7 @@ export default function KorvstroganofPage() {
                     </h1>
                     <p className="text-gray-600 text-lg">
                         En svensk klassiker direkt från hjärtat!
-                        Passar till den vardagliga familjemiddagen. 
+                        Passar till den vardagliga familjemiddagen.
                     </p>
 
                     {/* Ingredienser */}
@@ -71,12 +71,21 @@ export default function KorvstroganofPage() {
                         alt="Korvstroganof"
                         className="rounded-2xl shadow-md object-cover max-h-[400px] w-full"
                     />
-                      <img
+                    <img
                         src="/images/falukorv.jpg"
                         alt="Korvstroganof"
                         className="rounded-2xl shadow-md object-cover max-h-[400px] w-full"
                     />
                 </div>
+            </div>
+            {/* Navigeringsknappar till andra recept */}
+            <div className="mt-8 flex justify-between max-w-5xl mx-auto">
+                <Link
+                    href="/hamburger"
+                    className="px-6 py-3 rounded-full bg-white border shadow-md text-gray-700 font-semibold hover:bg-gray-100 transition"
+                >
+                    ← Föregående recept
+                </Link>
             </div>
         </main>
     );

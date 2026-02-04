@@ -5,11 +5,11 @@ export default function HomePage() {
     <main className="min-h-screen bg-[#eff5ef]">
       <div className="relative h-[300px] md:h-[400px] w-full">
          <img
-          src="/images/strawberries.jpg"
-          alt="Strawberries"
+          src="/images/fruktOgrönt.jpg"
+          alt="fruktOgrönt"
           className="h-full w-full object-cover"
         />
-        <div className="absolute inset-0 bg-white/30 flex items-center justify-center">
+        <div className="absolute inset-0 bg-black/10 flex items-center justify-center">
         <h1 className="text-5xl font-bold mb-8 text-center">
           Receptboken
         </h1>

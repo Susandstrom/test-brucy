@@ -11,7 +11,7 @@ export default function HamburgerPage() {
                     <h1 className="text-4xl font-bold text-gray-900">
                         Fredriks Hamburgare
                     </h1>
-                    <p className="text-gray-600 text-lg">  
+                    <p className="text-gray-600 text-lg">
                         Gott på några minuter, enkelt att göra till en fredagkväll!
                         Passar till en middag för 2 personer.
                     </p>
@@ -99,6 +99,15 @@ export default function HamburgerPage() {
                         className="rounded-2xl shadow-md object-cover max-h-[300px] w-full"
                     />
                 </div>
+            </div>
+            {/* Navigeringsknappar till andra recept */}
+            <div className="mt-8 flex justify-between max-w-5xl mx-auto">
+                <Link
+                    href="/biryani"
+                    className="px-6 py-3 rounded-full bg-white border shadow-md text-gray-700 font-semibold hover:bg-gray-100 transition"
+                >
+                    Nästa recept →
+                </Link>
             </div>
         </main>
     );
