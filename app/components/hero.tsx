@@ -4,11 +4,17 @@ interface HeroProps {
   title: string;
   subtitle?: string;
   image: string;
-  titlecolor?: string;     // Tailwind-klass för titel
-  subtitlecolor?: string;  // Tailwind-klass för undertitel
+  titlecolor?: string;      // Tailwind-klass för titel
+  subtitlecolor?: string;   // Tailwind-klass för undertitel
 }
 
-export default function Hero({ title, subtitle, image, titlecolor, subtitlecolor }: HeroProps) {
+export default function Hero({ 
+  title, 
+  subtitle, 
+  image, 
+  titlecolor, 
+  subtitlecolor,
+}: HeroProps) {
   return (
     <div
       className="relative w-full h-[250px] md:h-[400px] flex items-center justify-center text-center"
@@ -18,16 +24,13 @@ export default function Hero({ title, subtitle, image, titlecolor, subtitlecolor
         backgroundPosition: "center",
       }}
     >
-      {/* Overlay för bättre läsbarhet */}
-      <div className="absolute inset-0 bg-white/30"></div>
-
       {/* Text */}
       <div className="relative px-4">
         <h1 className={`text-3xl md:text-5xl font-bold ${titlecolor || "text-white"}`}>
           {title}
         </h1>
         {subtitle && (
-          <p className={`mt-2 text-lg md:text-2xl ${subtitlecolor || "text-white"}`}>
+          <p className={`mt-2 text-lg md:text-2xl ${subtitlecolor || "text-white/90"}`}>
             {subtitle}
           </p>
         )}
