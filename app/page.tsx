@@ -11,7 +11,7 @@ export default function HomePage() {
         />
         <div className="absolute inset-0 bg-black/10 flex items-center justify-center">
         <h1 className="text-5xl font-bold mb-8 text-center">
-          Receptboken
+          Hem
         </h1>
         </div>
 
