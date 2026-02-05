@@ -8,26 +8,33 @@ export default function Navbar() {
 
   return (
     <nav className="bg-white shadow-md px-6 py-4 flex items-center justify-between">
-      {/* Logo / titel */}
-      <div className="text-2xl font-bold">Min Receptbok</div>
+      {/*loggan */}
+       <div className="flex items-center gap-3">
+        {/* loggan/bild */}
+        <img 
+          src="/images/gront-logo.png" 
+          alt="Min Receptbok Logo"
+          className="h-10 w-10 object-contain" //storlek på logo
+        />
+        {/* logo-titel (om du vill ha) */}
+        <div className="text-2xl font-bold"><Link href="/">Min Receptbok</Link></div>
+      </div>
 
       {/* Meny*/}
       <div className="flex items-center gap-6">
         <Link href="/" className="hover:text-gray-900 font-medium">
           Hem
         </Link>
+        <Link href="/butik" className="hover:text-gray-900 font-medium">
+        Butik
+        </Link>
 
         {/* Dropdown */}
         <div className="relative">
           <button
             onClick={() => setDropdownOpen(!dropdownOpen)}
-            className="px-4 py-2 font-semibold rounded hover:bg-gray-100 transition"
-          >
-            Recept
-            {/* Pil ner */}
-            <span className="ml-2 text-sm">
-              ▼
-            </span>
+            className="px-4 py-2 font-medium rounded hover:bg-gray-100 transition">
+          Recept
           </button>
 
           {dropdownOpen && (

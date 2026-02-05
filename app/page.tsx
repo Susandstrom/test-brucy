@@ -2,11 +2,11 @@ import Link from "next/link";
 
 export default function HomePage() {
   return (
-    <main className="min-h-screen bg-[#eff5ef]">
+    <main className="min-h-screen">
       <div className="relative h-[300px] md:h-[400px] w-full">
          <img
-          src="/images/fruktOgrönt.jpg"
-          alt="fruktOgrönt"
+          src="/images/veggies.jpg"
+          alt="veggies"
           className="h-full w-full object-cover"
         />
         <div className="absolute inset-0 bg-black/10 flex items-center justify-center">

@@ -4,8 +4,8 @@ interface HeroProps {
   title: string;
   subtitle?: string;
   image: string;
-  titlecolor?: string;      // Tailwind-klass för titel
-  subtitlecolor?: string;   // Tailwind-klass för undertitel
+  titlecolor?: string;      
+  subtitlecolor?: string;   
 }
 
 export default function Hero({ 
@@ -26,7 +26,7 @@ export default function Hero({
     >
       {/* Text */}
       <div className="relative px-4">
-        <h1 className={`text-3xl md:text-5xl font-bold ${titlecolor || "text-white"}`}>
+        <h1 className={`mt-2 text-3xl md:text-5xl font-bold ${titlecolor || "text-white"}`}>
           {title}
         </h1>
         {subtitle && (

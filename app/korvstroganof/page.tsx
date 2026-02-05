@@ -19,6 +19,7 @@ export default function KorvstroganofPage() {
         <div className="mx-auto max-w-5xl bg-white rounded-2xl shadow-md p-8 md:p-12">
 
           <div className="text-gray-600 text-lg mb-8 md:text-left text-center">
+            <p>Ett recept från min barndom, fyllt av minnen av hemlagad mat och gemenskap.</p>
             <ul className="list-disc list-inside space-y-1 mb-4">
               <li>Passar perfekt för vardaglig familjemiddag för 4 personer</li>
               <li>Beräknad tillagningstid: ca 30 minuter</li>
