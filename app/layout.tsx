@@ -1,8 +1,10 @@
+// app/layout.tsx
 import type { Metadata } from "next";
 import { Barlow, Barlow_Condensed } from "next/font/google";
 import "./globals.css";
 import Navbar from "./components/navbar";
 import Footer from "./components/footer";
+import { CartProvider } from "./context/CartContext";
 
 /* Brödtext */
 const barlow = Barlow({
@@ -18,6 +20,7 @@ const barlowCondensed = Barlow_Condensed({
   variable: "--font-barlow-condensed",
 });
 
+// Metadata (Server only)
 export const metadata: Metadata = {
   title: "Min Receptbok",
   description: "En samling av mina favoritrecept",
@@ -37,9 +40,12 @@ export default function RootLayout({
           bg-[#eff5ef] flex flex-col min-h-screen
         `}
       >
-        <Navbar />
-        <main className="flex-grow">{children}</main>
-        <Footer />
+        {/* Client Wrapper */}
+        <CartProvider>
+          <Navbar />
+          <main className="flex-grow">{children}</main>
+          <Footer />
+        </CartProvider>
       </body>
     </html>
   );

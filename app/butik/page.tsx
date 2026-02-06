@@ -1,10 +1,72 @@
+"use client";
+
 import Hero from "../components/hero";
+import { useCart } from "../context/CartContext";
+
+const products = [
+  {
+    id: 1,
+    name: "Biryani krydda",
+    description: "Autentisk kryddblandning",
+    price: 89,
+    image: "/images/spice.jpg",
+  },
+  {
+    id: 2,
+    name: "Liten stekpanna - Blomma",
+    description: "Mindre stekpanna (29cm) i blomform.",
+    price: 129,
+    image: "/images/liten-stekpanna.jpg",
+  },
+  {
+    id: 3,
+    name: "Kanelstänger",
+    description: "50g, Hela kanelstänger för bakning.",
+    price: 199,
+    image: "/images/kanelstäng.jpg",
+  },
+  {
+    id: 4,
+    name: "Vit mortel",
+    description: "Liten mortel i vit marmorstil.",
+    price: 189,
+    image: "/images/mortel.jpg",
+  },
+   {
+    id: 5,
+    name: "Peppar Kit",
+    description: "Pepparkvarn med fyra sorters peppar",
+    price: 299,
+    image: "/images/peppar-kit.jpg",
+  },
+   {
+    id: 6,
+    name: "Melodypeppar",
+    description: "Melodypeppar 50g",
+    price: 119,
+    image: "/images/melodypepper.jpg",
+  },
+   {
+    id: 7,
+    name: "Flaska för Olivolja",
+    description: "Stilren flaska för olivolja",
+    price: 289,
+    image: "/images/Oliveolja.jpg",
+  },
+   {
+    id: 8,
+    name: "Stjärnanis",
+    description: "50g, förhöj dina smaklökar",
+    price: 169,
+    image: "/images/stjärnanis.jpg",
+  },
+];
 
 export default function ButikPage() {
+  const { addToCart } = useCart();
+
   return (
     <main className="min-h-screen bg-[#eff5ef]">
-      
-      {/* HERO-bild */}
       <Hero
         title="Shop"
         subtitle="Hitta dina nya favoriter!"
@@ -13,121 +75,34 @@ export default function ButikPage() {
         subtitlecolor="text-yellow-100"
       />
 
-      {/* PRODUKTER */}
       <div className="max-w-7xl mx-auto px-4 py-12">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          {products.map((product) => (
+            <div
+              key={product.id}
+              className="bg-white rounded-xl shadow-md p-6 flex flex-col h-full"
+            >
+              <img
+                src={product.image}
+                alt={product.name}
+                className="w-full h-48 object-cover rounded-xl mb-4"
+              />
 
-          {/* Produktkort */}
-          <div className="bg-white rounded-xl shadow-md p-6 flex flex-col h-full">
-            <img
-              src="/images/spice.jpg"
-              alt="Kryddor"
-              className="rounded-xl mb-4"
-            />
-            <h3 className="text-xl font-semibold">Biryani krydda</h3>
-            <p className="text-gray-600">Autentisk kryddblandning</p>
+              <h3 className="text-xl font-semibold">{product.name}</h3>
+              <p className="text-gray-600">{product.description}</p>
 
-            <div className="mt-auto"> {/*Gör att pris & knapp är längst ner*/}
-            <p className="font-bold mt-2">89 KR</p>
+              <div className="mt-auto">
+                <p className="font-bold mt-2">{product.price} KR</p>
 
-            <button className="mt-4 w-full bg-green-600 text-white py-2 rounded-xl hover:bg-green-700">
-              Lägg i varukorg
-            </button>
-          </div>
-        </div>
-
-          {/* produkt nr2 */}
-          <div className="bg-white rounded-xl shadow-md p-6 flex flex-col h-full">
-            <img
-              src="/images/liten-stekpanna.jpg"
-              alt="Liten stekpanna"
-              className="rounded-xl mb-4"
-            />
-            <h3 className="text-xl font-semibold">Liten stekpanna - Blomma</h3>
-            <p className="text-gray-600">En mindre stekpanna(29cm) i form av en blomma för en roligare frukost.</p>
-
-            <div className="mt-auto">
-            <p className="font-bold mt-2">129 KR</p>
-
-            <button className="mt-4 w-full bg-green-600 text-white py-2 rounded-xl hover:bg-green-700">
-              Lägg i varukorg
-            </button>
-          </div>
-        </div>
-
-          <div className="bg-white rounded-xl shadow-md p-6 flex flex-col h-full">
-            <img
-              src="/images/kanelstäng.jpg"
-              alt="Kanelstänger"
-              className="rounded-xl mb-4"
-            />
-            <h3 className="text-xl font-semibold">Kanelstänger 100g</h3>
-            <p className="text-gray-600">100g Hela Kanelstänger för bakning och matlagning.</p>
-
-            <div className="mt-auto">
-            <p className="font-bold mt-2">199 KR</p>
-
-            <button className="mt-4 w-full bg-green-600 text-white py-2 rounded-xl hover:bg-green-700">
-              Lägg i varukorg
-            </button>
-          </div>
-          </div>
-
-         <div className="bg-white rounded-xl shadow-md p-6 flex flex-col h-full">
-            <img
-              src="/images/spice.jpg"
-              alt="Kryddor"
-              className="rounded-xl mb-4"
-            />
-            <h3 className="text-xl font-semibold">Biryani krydda</h3>
-            <p className="text-gray-600">Autentisk kryddblandning</p>
-
-            <div className="mt-auto">
-            <p className="font-bold mt-2">89 KR</p>
-
-            <button className="mt-4 w-full bg-green-600 text-white py-2 rounded-xl hover:bg-green-700">
-              Lägg i varukorg
-            </button>
-          </div>
-        </div>
-
-         <div className="bg-white rounded-xl shadow-md p-6 flex flex-col h-full">
-            <img
-              src="/images/spice.jpg"
-              alt="Kryddor"
-              className="rounded-xl mb-4"
-            />
-            <h3 className="text-xl font-semibold">Biryani krydda</h3>
-            <p className="text-gray-600">Autentisk kryddblandning</p>
-
-            <div className="mt-auto">
-            <p className="font-bold mt-2">89 KR</p>
-
-            <button className="mt-4 w-full bg-green-600 text-white py-2 rounded-xl hover:bg-green-700">
-              Lägg i varukorg
-            </button>
-          </div>
-        </div>
-
-         <div className="bg-white rounded-xl shadow-md p-6 flex flex-col h-full">
-            <img
-              src="/images/spice.jpg"
-              alt="Kryddor"
-              className="rounded-xl mb-4"
-            />
-            <h3 className="text-xl font-semibold">Biryani krydda</h3>
-            <p className="text-gray-600">Autentisk kryddblandning</p>
-            
-            <div className="mt-auto">
-            <p className="font-bold mt-2">89 KR</p>
-
-            <button className="mt-4 w-full bg-green-600 text-white py-2 rounded-xl hover:bg-green-700">
-              Lägg i varukorg
-            </button>
-          </div>
-        </div>
-         
-
+                <button
+                  onClick={() => addToCart(product)}
+                  className="mt-4 w-full bg-green-600 text-white py-2 rounded-xl hover:bg-green-700"
+                >
+                  Lägg i varukorg
+                </button>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </main>
