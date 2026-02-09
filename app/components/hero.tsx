@@ -1,11 +1,10 @@
-"use client";
-
 interface HeroProps {
   title: string;
   subtitle?: string;
   image: string;
   titlecolor?: string;      
-  subtitlecolor?: string;   
+  subtitlecolor?: string;
+  stylePosition?: string;   // ny prop
 }
 
 export default function Hero({ 
@@ -14,6 +13,7 @@ export default function Hero({
   image, 
   titlecolor, 
   subtitlecolor,
+  stylePosition = "center", // default
 }: HeroProps) {
   return (
     <div
@@ -21,12 +21,9 @@ export default function Hero({
       style={{
         backgroundImage: `url(${image})`,
         backgroundSize: "cover",
-        backgroundPosition: "center",
+        backgroundPosition: stylePosition, // använd prop
       }}
     >
-        {/*Overlay */}
-        <div className="absolute inset-0 bg-black/30" />
-        
       {/* Text */}
       <div className="relative px-4">
         <h1 className={`mt-2 text-3xl md:text-5xl font-bold ${titlecolor || "text-white"}`}>

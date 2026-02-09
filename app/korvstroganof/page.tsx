@@ -63,7 +63,7 @@ export default function KorvstroganofPage() {
                   href="/"
                   className="inline-block rounded-2xl bg-white border px-8 py-3 font-semibold shadow-md hover:bg-gray-100 transition"
                 >
-                  Back to menu
+                  Ta mig tillbaka
                 </Link>
               </div>
             </div>

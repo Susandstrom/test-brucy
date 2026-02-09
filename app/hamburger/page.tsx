@@ -12,6 +12,7 @@ export default function HamburgerPage() {
         image="/images/hamburger.jpg"
         titlecolor="text-white"
         subtitlecolor="text-white/90"
+        stylePosition="30% 70%"
       />
 
       {/* Text till recept */}
@@ -103,7 +104,7 @@ export default function HamburgerPage() {
               href="/"
               className="inline-block rounded-2xl bg-white border px-8 py-3 font-semibold shadow-md hover:bg-gray-100 transition"
             >
-              Back to menu
+              Ta mig tillbaka
             </Link>
           </div>
 

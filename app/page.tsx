@@ -1,23 +1,18 @@
 import Link from "next/link"; // Detta är startsidan (HEM)
+import Hero from "./components/hero";
 
 export default function HomePage() {
   return (
     <main className="min-h-screen">
       {/* HERO-bild */}
-      <div className="relative h-[300px] md:h-[400px] w-full">
-        <img
-          src="/images/pannkakor.jpg"
-          alt="Pannkaka"
-          className="h-full w-full object-cover object-[40%_10%]"
-        />
-
-        {/* Text på hero */}
-        <div className="absolute inset-0 bg-black/20 flex items-center justify-center">
-          <h1 className="text-5xl font-bold text-white drop-shadow-lg text-center">{/*Jag får inte den att bli vit */}
-            Hem
-          </h1>
-        </div>
-      </div>
+      <Hero
+        title="Hem"
+        subtitle="Från hjärtat och till ditt middagsbord"
+        image="/images/pannkakor.jpg"
+        titlecolor="text-white"
+        subtitlecolor="text-white/90"
+        stylePosition="50% 10%"
+      />
 
       {/* Mina recept */}
       <section className="px-4 py-16 max-w-7xl mx-auto">
