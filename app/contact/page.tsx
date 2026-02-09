@@ -30,7 +30,7 @@ export default function ContactPage() {
           alt="Strawberries"
           className="h-full w-full object-cover"
         />
-        <div className="absolute inset-0 bg-white/30 flex items-center justify-center">
+        <div className="absolute inset-0 bg-white/10 flex items-center justify-center">
           <h1 className="text-4xl md:text-5xl font-bold text-white text-center">
             Kontakta oss
           </h1>
@@ -84,7 +84,7 @@ export default function ContactPage() {
 
             <button
               type="submit"
-              className="rounded-2xl bg-[#eff5ef] border border-gray-300 px-6 py-3 font-semibold shadow-md hover:bg-gray-100 transition"
+              className="rounded-2xl bg-[#009933] border border-gray-300 px-6 py-3 font-semibold shadow-md hover:bg-gray-100 transition"
             >
               Skicka
             </button>

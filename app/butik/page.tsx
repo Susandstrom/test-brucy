@@ -96,7 +96,7 @@ export default function ButikPage() {
 
                 <button
                   onClick={() => addToCart(product)}
-                  className="mt-4 w-full bg-green-600 text-white py-2 rounded-xl hover:bg-green-700"
+                  className="mt-4 w-full bg-[#009933] text-white py-2 rounded-xl hover:bg-green-700"
                 >
                   Lägg i varukorg
                 </button>
