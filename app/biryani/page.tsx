@@ -3,7 +3,7 @@ import Hero from "../components/hero";
 
 export default function BiryaniPage() {
   return (
-    <main className="min-h-screen bg-[#eff5ef]">
+    <main className="min-h-screen">
 
       {/* HERO-bild */}
       <Hero

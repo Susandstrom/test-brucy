@@ -3,15 +3,15 @@ import Hero from "../components/hero";
 
 export default function KorvstroganofPage() {
   return (
-    <main className="min-h-screen bg-[#eff5ef]">
+    <main className="min-h-screen">
 
       {/* HERO-bild */}
       <Hero
         title="Klings Korvstroganof"
         subtitle="En svensk klassiker direkt från hjärtat!"
         image="/images/stroganof.jpg"
-        titlecolor="text-white"
-        subtitlecolor="text-yellow-100"
+       titlecolor="text-white"
+        subtitlecolor="text-white/90"
       />
 
       {/* Text till recept */}

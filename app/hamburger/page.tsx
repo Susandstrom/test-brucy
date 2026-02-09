@@ -3,12 +3,12 @@ import Hero from "../components/hero";
 
 export default function HamburgerPage() {
   return (
-    <main className="min-h-screen bg-[#eff5ef]">
+    <main className="min-h-screen">
 
       {/* HERO-bild */}
       <Hero
         title="Fredriks Hamburgare"
-        subtitle="Gott på några minuter – perfekt för fredagkvällen!"
+        subtitle="Gott på några minuter, perfekt för fredagkvällen!"
         image="/images/hamburger.jpg"
         titlecolor="text-white"
         subtitlecolor="text-white/90"

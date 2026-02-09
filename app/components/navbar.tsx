@@ -12,15 +12,16 @@ export default function Navbar() {
   return (
     <nav className="bg-white shadow-md px-6 py-4">
       <div className="flex items-center justify-between">
-        {/* Logo + titel */}
+
+        {/* Logga + titel */}
         <div className="flex items-center gap-3">
           <img 
             src="/images/gront-logo.png" 
-            alt="Min Receptbok Logo"
+            alt="Min grönaboken Logo"
             className="h-10 w-10 object-contain"
           />
           <div className="text-2xl font-bold">
-            <Link href="/">Min Receptbok</Link>
+            <Link href="/">Grönaboken</Link>
           </div>
         </div>
 

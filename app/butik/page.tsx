@@ -1,8 +1,10 @@
-"use client";
+"use client"; //produktsida -  med produktkort
 
 import Hero from "../components/hero";
 import { useCart } from "../context/CartContext";
+import Link from "next/link";
 
+//Produkter
 const products = [
   {
     id: 1,
@@ -62,11 +64,12 @@ const products = [
   },
 ];
 
+//utseendet av sida
 export default function ButikPage() {
   const { addToCart } = useCart();
 
   return (
-    <main className="min-h-screen bg-[#eff5ef]">
+    <main className="min-h-screen">
       <Hero
         title="Shop"
         subtitle="Hitta dina nya favoriter!"
@@ -104,6 +107,15 @@ export default function ButikPage() {
             </div>
           ))}
         </div>
+        {/* Tillbaka-knapp */}
+          <div className="mt-8 flex justify-end">
+            <Link
+              href="/"
+              className="inline-block rounded-2xl bg-white border px-8 py-3 font-semibold shadow-md hover:bg-gray-100 transition"
+            >
+              Back to menu
+            </Link>
+          </div>
       </div>
     </main>
   );

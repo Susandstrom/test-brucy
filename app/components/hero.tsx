@@ -24,6 +24,9 @@ export default function Hero({
         backgroundPosition: "center",
       }}
     >
+        {/*Overlay */}
+        <div className="absolute inset-0 bg-black/30" />
+        
       {/* Text */}
       <div className="relative px-4">
         <h1 className={`mt-2 text-3xl md:text-5xl font-bold ${titlecolor || "text-white"}`}>

@@ -1,4 +1,4 @@
-// app/layout.tsx
+// Detta är för alla sidor (t.ex. navbar etc)
 import type { Metadata } from "next";
 import { Barlow, Barlow_Condensed } from "next/font/google";
 import "./globals.css";
@@ -22,10 +22,11 @@ const barlowCondensed = Barlow_Condensed({
 
 // Metadata (Server only)
 export const metadata: Metadata = {
-  title: "Min Receptbok",
-  description: "En samling av mina favoritrecept",
+  title: "Grönt",
+  description: "En samling av mina favoritrecept, och favoritprodukter",
 };
 
+//Detta är hur sidorna ser ut, t.ex vilken ordning allt hamnar. Jätte viktigt att det är rätt***
 export default function RootLayout({
   children,
 }: {

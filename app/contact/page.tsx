@@ -1,9 +1,9 @@
-"use client"; /*Måste vara längst upp och innan import*/
+"use client";
 
 import Link from "next/link";
 import { useState } from "react";
+import Hero from "../components/hero";
 
-/*Till mitt formulär */
 export default function ContactPage() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -11,10 +11,8 @@ export default function ContactPage() {
 
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-
     console.log({ name, email, message });
     alert("Tack för ditt meddelande!");
-
     setName("");
     setEmail("");
     setMessage("");
@@ -24,31 +22,21 @@ export default function ContactPage() {
     <main className="min-h-screen bg-[#eff5ef]">
 
       {/* HERO-bild */}
-      <div className="relative h-[300px] md:h-[400px] w-full">
-        <img
-          src="/images/strawberries.jpg"
-          alt="Strawberries"
-          className="h-full w-full object-cover"
+      <Hero
+              title="Kontakta oss"
+              image="/images/strawberries.jpg"
+              titlecolor="text-white"
         />
-        <div className="absolute inset-0 bg-white/10 flex items-center justify-center">
-          <h1 className="text-4xl md:text-5xl font-bold text-white text-center">
-            Kontakta oss
-          </h1>
-        </div>
-      </div>
 
-      {/*Text till mitt formulär */}
+      {/* Formulär */}
       <div className="px-4 py-12">
-        <div className="mx-auto max-w-xl bg-white rounded-2xl shadow-md p-8">
-
-          <p className="text-center text-gray-600 mb-6">
+        <div className="mx-auto max-w-xl bg-white rounded-2xl shadow-md p-8 text-left">
+          <p className="text-gray-600 mb-6">
             Hittar du inte det du söker eller har frågor?  
             Skicka ett meddelande så hör vi av oss!
           </p>
 
-          {/* Formuläret */}
-          <form onSubmit={handleSubmit} className="flex flex-col gap-4 text-left">
-
+          <form onSubmit={handleSubmit} className="flex flex-col gap-4">
             <div>
               <label className="block mb-1 font-semibold">Namn</label>
               <input
@@ -84,21 +72,23 @@ export default function ContactPage() {
 
             <button
               type="submit"
-              className="rounded-2xl bg-[#009933] border border-gray-300 px-6 py-3 font-semibold shadow-md hover:bg-gray-100 transition"
+              className="rounded-2xl bg-[#009933] border border-gray-300 px-6 py-3 font-semibold shadow-md text-white hover:bg-green-700 transition"
             >
               Skicka
             </button>
           </form>
         </div>
       </div>
-       <div className="mt-6 text-center">
-            <Link
-              href="/"
-              className="inline-block rounded-2xl bg-white border border-gray-300 px-6 py-3 font-semibold shadow-md hover:bg-gray-100 transition"
-            >
-              Back to menu
-            </Link>
-          </div>
+
+      {/* Tillbaka-knapp */}
+      <div className="mt-8 flex justify-center">
+        <Link
+          href="/"
+          className="inline-block rounded-2xl bg-white border px-8 py-3 font-semibold shadow-md text-gray-700 hover:bg-gray-100 transition"
+        >
+          Back to menu
+        </Link>
+      </div>
     </main>
   );
 }

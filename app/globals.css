@@ -1,16 +1,17 @@
+/*Min CSS-fil*/
 @import "tailwindcss";
 
-/* Färgvariabler */
+/* Färg */
 :root {
-  --background: #eff5ef;
-  --foreground: #171717;
+  --background: #ecf8ec;
+  --foreground: #0a0a0a;
 }
 
 /* Dark mode */
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
-    --foreground: #ededed;
+    --foreground: #ecf8ec;
   }
 }
 
@@ -39,7 +40,7 @@ body {
   box-shadow: 0 6px 12px rgba(0,0,0,0.25);
 }
 
-/* Back-knapp */
+/* tillbaka-knapp */
 .back-link, .back-button {
   background-color: white;
   border-radius: 30px;
@@ -54,11 +55,11 @@ body {
 }
 
 .back-link:hover, .back-button:hover {
-  background-color: #ffe0b2;
+  background-color: #ecf8ec;
   transform: scale(1.05);
 }
 
-/* Rubrik- och textjustering */
+/* Rubrik- och text */
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-barlow-condensed), sans-serif;
   color: var(--foreground);
