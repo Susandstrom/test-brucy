@@ -27,7 +27,7 @@ export default function Footer() {
               </Link>
             </li>
             <li>
-              <Link href="/recipes" className="hover:text-green-400 flex items-center gap-2 justify-center">
+              <Link href="/recipe" className="hover:text-green-400 flex items-center gap-2 justify-center">
                 <BookOpen size={16} /> Recept
               </Link>
             </li>
