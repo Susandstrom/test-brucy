@@ -15,6 +15,18 @@ export default function BiryaniPage() {
         stylePosition="30% 20%"
       />
 
+        {/* Tillbaka-knapp under hero*/}
+      <div className="mt-8 px-4">
+        <div className="mx-auto max-w-5xl flex justify-end">
+          <Link
+            href="/"
+            className="inline-block rounded-2xl bg-white border px-8 py-3 font-semibold shadow-md hover:bg-gray-100 transition"
+          >
+            Ta mig tillbaka
+          </Link>
+        </div>
+      </div>
+
       {/* Text till recept */}
       <div className="px-4 py-12">
         <div className="mx-auto max-w-5xl bg-white rounded-2xl shadow-md p-8 md:p-12">
@@ -36,7 +48,7 @@ export default function BiryaniPage() {
 
           {/* Ingredienser + Bilder */}
           <div className="md:flex md:gap-10">
-            
+
             {/* Ingredienser */}
             <div className="md:w-1/2 text-left flex flex-col gap-2">
               <h2 className="text-xl font-semibold text-gray-800 mt-3 mb-1">
@@ -97,30 +109,18 @@ export default function BiryaniPage() {
               />
             </div>
           </div>
-
-          {/* Tillbaka-knapp */}
-          <div className="mt-8 flex justify-start">
-            <Link
-              href="/"
-              className="inline-block rounded-2xl bg-white border px-8 py-3 font-semibold shadow-md hover:bg-gray-100 transition"
-            >
-              Ta mig tillbaka
-            </Link>
-          </div>
-
         </div>
-      </div>
+        {/* Knappar */}
+        <div className="mt-8 mx-auto max-w-5xl flex items-center justify-between px-4">
+          <Link
+            href="/korvstroganof"
+            className="inline-block rounded-2xl bg-white border px-8 py-3 font-semibold shadow-md hover:bg-gray-100 transition"
+          >
+            ← Föregående recept
+          </Link>
+        </div>
 
-      {/* Bläddra bland recept */}
-      <div className="mt-8 flex justify-between max-w-5xl mx-auto px-4">
-        <Link
-          href="/korvstroganof"
-          className="px-6 py-3 rounded-full bg-white border shadow-md text-gray-700 font-semibold hover:bg-gray-100 transition"
-        >
-          ← Föregående recept
-        </Link>
       </div>
-
     </main>
   );
 }

@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useCart } from "../context/CartContext";
 
 export default function Navbar() {
-  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [dropdownOpen, setDropdownOpen] = useState(false); // för mobil dropdown
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { cart } = useCart();
 
@@ -28,42 +28,36 @@ export default function Navbar() {
         {/* Desktop-menyn */}
         <div className="hidden md:flex items-center gap-6">
           <Link href="/" className="hover:text-gray-900 font-medium">Hem</Link>
-          <Link href="/butik" className="hover:text-gray-900 font-medium">Butik</Link>
+          <Link href="/shop" className="hover:text-gray-900 font-medium">Butik</Link>
 
           {/* Dropdown */}
-          <div className="relative">
-            <button
-              onClick={() => setDropdownOpen(!dropdownOpen)}
-              className="px-4 py-2 font-medium rounded hover:bg-gray-100 transition"
+          <div className="relative group">
+            <Link
+              href="/recipe"
+              className="px-4 py-2 font-medium rounded hover:bg-gray-100 transition flex items-center gap-1"
             >
               Recept ▼
-            </button>
-
-            {dropdownOpen && (
-              <div className="absolute right-0 mt-2 w-48 bg-white border rounded shadow-lg z-10">
-                <Link
-                  href="/biryani"
-                  className="block px-4 py-2 hover:bg-gray-100 transition"
-                  onClick={() => setDropdownOpen(false)}
-                >
-                  Biryani
-                </Link>
-                <Link
-                  href="/hamburger"
-                  className="block px-4 py-2 hover:bg-gray-100 transition"
-                  onClick={() => setDropdownOpen(false)}
-                >
-                  Hamburger
-                </Link>
-                <Link
-                  href="/korvstroganof"
-                  className="block px-4 py-2 hover:bg-gray-100 transition"
-                  onClick={() => setDropdownOpen(false)}
-                >
-                  Korvstroganof
-                </Link>
-              </div>
-            )}
+            </Link>
+            <div className="absolute right-0 mt-2 w-48 bg-white border rounded shadow-lg z-10 opacity-0 group-hover:opacity-100 transition">
+              <Link
+                href="/biryani"
+                className="block px-4 py-2 hover:bg-gray-100 transition"
+              >
+                Biryani
+              </Link>
+              <Link
+                href="/hamburger"
+                className="block px-4 py-2 hover:bg-gray-100 transition"
+              >
+                Hamburger
+              </Link>
+              <Link
+                href="/korvstroganof"
+                className="block px-4 py-2 hover:bg-gray-100 transition"
+              >
+                Korvstroganof
+              </Link>
+            </div>
           </div>
 
           <Link href="/contact" className="hover:text-gray-900 font-medium">Kontakta oss</Link>
@@ -94,35 +88,41 @@ export default function Navbar() {
       {mobileMenuOpen && (
         <div className="md:hidden mt-4 flex flex-col gap-2 bg-white border rounded p-4 shadow">
           <Link href="/" className="hover:text-gray-900 font-medium">Hem</Link>
-          <Link href="/butik" className="hover:text-gray-900 font-medium">Butik</Link>
+          <Link href="/shop" className="hover:text-gray-900 font-medium">Butik</Link>
 
-          {/* Dropdown i mobilmeny */}
-          <div>
+          {/* Accordion dropdown för Recept */}
+          <div className="flex flex-col">
+            <Link
+              href="/recipe"
+              className="px-2 py-1 font-medium rounded hover:bg-gray-100 transition"
+            >
+              Recept
+            </Link>
             <button
               onClick={() => setDropdownOpen(!dropdownOpen)}
-              className="w-full text-left px-2 py-1 font-medium rounded hover:bg-gray-100 transition"
+              className="text-left px-2 py-1 font-medium rounded hover:bg-gray-100 transition"
             >
-              Recept ▼
+              {dropdownOpen ? "▲ Visa underrecept" : "▼ Visa underrecept"}
             </button>
             {dropdownOpen && (
-              <div className="pl-4 mt-1 flex flex-col gap-1">
+              <div className="pl-4 flex flex-col gap-1 mt-1">
                 <Link
                   href="/biryani"
-                  className="block px-4 py-2 hover:bg-gray-100 transition"
+                  className="block px-2 py-1 hover:bg-gray-100 transition"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   Biryani
                 </Link>
                 <Link
                   href="/hamburger"
-                  className="block px-4 py-2 hover:bg-gray-100 transition"
+                  className="block px-2 py-1 hover:bg-gray-100 transition"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   Hamburger
                 </Link>
                 <Link
                   href="/korvstroganof"
-                  className="block px-4 py-2 hover:bg-gray-100 transition"
+                  className="block px-2 py-1 hover:bg-gray-100 transition"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   Korvstroganof

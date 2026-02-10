@@ -44,9 +44,6 @@ export default function ContactPage() {
               Hittar du inte det du söker eller har du önskemål och funderingar? 
               Hör av dig till oss, vi hjälper gärna!
             </p>
-            <p className="text-gray-600">
-              Skicka ett meddelande så hör vi av oss så snart vi kan.
-            </p>
           </div>
 
           {/* Formulär */}

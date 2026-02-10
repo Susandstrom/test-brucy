@@ -1,23 +1,23 @@
-import Link from "next/link"; // Detta är startsidan (HEM)
-import Hero from "./components/hero";
+import Link from "next/link"; // Detta är receptsidan
+import Hero from "../components/hero";
 
-export default function HomePage() {
+export default function RecipePage() {
   return (
     <main className="min-h-screen">
       {/* HERO-bild */}
       <Hero
-        title="Hem"
+        title="Mina recept"
         subtitle="Från hjärtat och till ditt middagsbord"
-        image="/images/kronärtskocka.jpg"
+        image="/images/pannkakor.jpg"
         titlecolor="text-white"
         subtitlecolor="text-white/90"
-        stylePosition="40% 20%"
+        stylePosition="50% 10%"
       />
 
       {/* Mina recept */}
       <section className="px-4 py-16 max-w-7xl mx-auto">
         <h2 className="text-3xl font-bold mb-8 text-left">
-          Mina recept
+          Alla mina favoritrecept
         </h2>
 
         <div className="grid gap-8 sm:grid-cols-2 md:grid-cols-3">
@@ -67,3 +67,5 @@ export default function HomePage() {
     </main>
   );
 }
+
+
