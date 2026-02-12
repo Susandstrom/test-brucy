@@ -1,25 +1,11 @@
 /*Min CSS-fil*/
 @import "tailwindcss";
 
-/* Färg */
-:root {
-  --background: #ecf8ec;
-  --foreground: #0a0a0a;
-}
-
-/* Dark mode */
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ecf8ec;
-  }
-}
-
 /* Body */
 body {
   font-family: var(--font-barlow), sans-serif; /* eller sans-serif fallback */
-  background-color: var(--background);
-  color: var(--foreground);
+  background-color: #d8f3d8;
+  color: #000000;
   text-align: center;
   margin: 0;
   padding: 0;
@@ -62,7 +48,6 @@ body {
 /* Rubrik- och text */
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-barlow-condensed), sans-serif;
-  color: var(--foreground);
 }
 
 p, li {

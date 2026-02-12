@@ -4,7 +4,7 @@ interface HeroProps {
   image: string;
   titlecolor?: string;      
   subtitlecolor?: string;
-  stylePosition?: string;   // ny prop
+  stylePosition?: string;  
 }
 
 export default function Hero({ 
@@ -21,16 +21,18 @@ export default function Hero({
       style={{
         backgroundImage: `url(${image})`,
         backgroundSize: "cover",
-        backgroundPosition: stylePosition, // använd prop
+        backgroundPosition: stylePosition, 
       }}
     >
       {/* Text */}
       <div className="relative px-4">
-        <h1 className={`mt-2 text-3xl md:text-5xl font-bold ${titlecolor || "text-white"}`}>
+        <h1 className={`mt-2 text-3xl md:text-5xl font-bold ${titlecolor || "text-white"}`}
+        style={{ textShadow: "0 6px 18px rgba(0,0,0,0.6)"}}> {/*Skugga på titeln*/}
           {title}
         </h1>
         {subtitle && (
-          <p className={`mt-2 text-lg md:text-2xl ${subtitlecolor || "text-white/90"}`}>
+          <p className={`mt-2 text-lg md:text-2xl ${subtitlecolor || "text-white/90"}`}
+          style={{ textShadow: "0 4px 12px rgba(0,0,0,0.5)"}}> {/*Skugga på underrubriken */}
             {subtitle}
           </p>
         )}

@@ -9,8 +9,6 @@ export default function RecipePage() {
         title="Mina recept"
         subtitle="Från hjärtat och till ditt middagsbord"
         image="/images/pannkakor.jpg"
-        titlecolor="text-white"
-        subtitlecolor="text-white/90"
         stylePosition="50% 10%"
       />
 

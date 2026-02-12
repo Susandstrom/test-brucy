@@ -13,12 +13,6 @@ const barlow = Barlow({
   variable: "--font-barlow",
 });
 
-/* Rubriker */
-const barlowCondensed = Barlow_Condensed({
-  subsets: ["latin"],
-  weight: ["400", "600", "700"],
-  variable: "--font-barlow-condensed",
-});
 
 // Metadata (Server only)
 export const metadata: Metadata = {
@@ -36,8 +30,8 @@ export default function RootLayout({
     <html lang="sv">
       <body
         className={`
-          ${barlow.variable}
-          ${barlowCondensed.variable}
+          
+          
           bg-[#eff5ef] flex flex-col min-h-screen
         `}
       >

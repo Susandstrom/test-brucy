@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Hero from "../components/hero";
+import { buttonSecondary } from "../styles";
 
 export default function BiryaniPage() {
   return (
@@ -20,7 +21,7 @@ export default function BiryaniPage() {
         <div className="mx-auto max-w-5xl flex justify-end">
           <Link
             href="/"
-            className="inline-block rounded-2xl bg-white border px-8 py-3 font-semibold shadow-md hover:bg-gray-100 transition"
+            className={buttonSecondary}
           >
             Ta mig tillbaka
           </Link>
@@ -114,7 +115,7 @@ export default function BiryaniPage() {
         <div className="mt-8 mx-auto max-w-5xl flex items-center justify-between px-4">
           <Link
             href="/korvstroganof"
-            className="inline-block rounded-2xl bg-white border px-8 py-3 font-semibold shadow-md hover:bg-gray-100 transition"
+            className={buttonSecondary}
           >
             ← Föregående recept
           </Link>

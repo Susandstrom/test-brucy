@@ -3,6 +3,8 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import Hero from "../components/hero";
+import { buttonPrimary, buttonSecondary } from "../styles";
+import Image from "next/image";
 
 export default function ContactPage() {
   const [name, setName] = useState("");
@@ -19,7 +21,7 @@ export default function ContactPage() {
   }
 
   return (
-    <main className="min-h-screen bg-[#eff5ef] flex flex-col items-center">
+    <main className="min-h-screen flex flex-col items-center">
 
       {/* HERO-bild */}
       <Hero
@@ -35,9 +37,11 @@ export default function ContactPage() {
 
           {/* Text + Bild */}
           <div className="md:w-1/2 flex flex-col items-start text-left"> {/* behåller items-start */}
-            <img
+            <Image
               src="/images/picnic.jpg"
               alt="Kontakt"
+              height={600}
+              width={400}
               className="w-full h-60 object-cover rounded-xl mb-6"
             />
             <p className="text-gray-600 mb-4">
@@ -83,7 +87,7 @@ export default function ContactPage() {
 
             <button
               type="submit"
-              className="rounded-2xl bg-[#009933] px-6 py-3 font-semibold text-white shadow-md hover:bg-green-700 transition"
+              className={buttonPrimary}
             >
               Skicka
             </button>
@@ -94,7 +98,7 @@ export default function ContactPage() {
         <div className="mt-8 flex justify-end">
           <Link
             href="/"
-            className="inline-block rounded-2xl bg-white border px-8 py-3 font-semibold shadow-md text-gray-700 hover:bg-gray-100 transition"
+            className={buttonSecondary}
           >
             Ta mig tillbaka
           </Link>

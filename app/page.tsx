@@ -1,9 +1,11 @@
 import Link from "next/link";
 import Hero from "./components/hero";
+import Image from "next/image";
+import { buttonPrimary, buttonSecondary } from "./styles";
 
 export default function HomePage() {
   return (
-    <main className="min-h-screen space-y-10">
+    <main className="min-h-screen space-y-8">
 
       {/* HERO */}
       <Hero
@@ -21,9 +23,11 @@ export default function HomePage() {
           <div className="md:flex md:items-center md:gap-12">
 
             {/* Bild */}
-            <img
+            <Image
               src="/images/eggs.jpg"
               alt="Ägg i kartong"
+              width={600}
+              height={400}
               className="rounded-2xl shadow-lg w-full md:w-1/2 h-80 md:h-[400px] object-cover"
             />
 
@@ -36,8 +40,8 @@ export default function HomePage() {
                 Upptäck en värld av smaker från världens olika hörn.
               </p>
               <Link
-                href="/recipes"
-                className="inline-block bg-green-600 text-white font-semibold px-6 py-3 rounded-xl shadow hover:bg-green-700 transition"
+                href="/recipe"
+                className={buttonPrimary}
               >
                 Se recepten
               </Link>
@@ -69,7 +73,7 @@ export default function HomePage() {
               </p>
               <Link
                 href="/shop"
-                className="bg-green-600 text-white font-semibold px-6 py-3 rounded-xl shadow hover:bg-green-700 transition"
+                className={buttonSecondary}
               >
                 Se vår butik
               </Link>

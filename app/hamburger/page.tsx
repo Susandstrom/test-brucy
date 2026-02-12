@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Hero from "../components/hero";
+import { buttonSecondary } from "../styles";
 
 export default function HamburgerPage() {
   return (
@@ -20,7 +21,7 @@ export default function HamburgerPage() {
         <div className="mx-auto max-w-5xl flex justify-end">
           <Link
             href="/"
-            className="inline-block rounded-2xl bg-white border px-8 py-3 font-semibold shadow-md hover:bg-gray-100 transition"
+            className={buttonSecondary}
           >
             Ta mig tillbaka
           </Link>
@@ -125,7 +126,7 @@ export default function HamburgerPage() {
         <div className="mx-auto max-w-5xl flex justify-end">
           <Link
             href="/korvstroganof"
-            className="px-6 py-3 rounded-full bg-white border shadow-md text-gray-700 font-semibold hover:bg-gray-100 transition"
+            className={buttonSecondary}
           >
             Nästa recept →
           </Link>
