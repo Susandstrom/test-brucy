@@ -18,7 +18,7 @@ export default function HomePage() {
       />
 
       {/* Bild + text + CTA */}
-      <section className="max-w-6xl mx-auto px-4 pt-12 pb-6">
+      <section className="max-w-6xl mx-auto px-4 pt-6 pb-1">
           <div className="md:flex md:gap-0">
 
             {/* Bild */}
@@ -44,10 +44,10 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="max-w-6xl mx-auto px-4 pt-6 pb-6">
-        <div className="flex flex-col md:flex-row md:gap-8">
+      <section className="max-w-6xl mx-auto px-4 pt-6 pb-1">
+        <div className="flex flex-col md:flex-row md:gap-10">
 
-          {/* Kort 1 */}
+          {/* Kort 1 + CTA till recept*/}
           <div className="flex-1 mb-6 md:mb-0 relative group overflow-hidden rounded-2xl">
             <img
               src="/images/pannkakor.jpg"
@@ -92,7 +92,7 @@ export default function HomePage() {
       </section>
 
       {/* Bild med CTA ovanpå */}
-      <section className="max-w-6xl mx-auto px-4 pt-6 pb-6">
+      <section className="max-w-6xl mx-auto px-4 pt-6 pb-1">
         <div className="relative rounded-2xl overflow-hidden shadow-lg">
 
           <img

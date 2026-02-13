@@ -1,5 +1,6 @@
 import Link from "next/link"; // Detta är receptsidan
 import Hero from "../components/hero";
+import { buttonSecondary } from "../styles";
 
 export default function RecipePage() {
   return (
@@ -61,6 +62,18 @@ export default function RecipePage() {
             </h3>
           </Link>
         </div>
+
+        {/* Tillbaka-knapp under hero*/}
+      <div className="mt-8 px-4 py-16">
+        <div className="mx-auto max-w-7xl flex justify-end">
+          <Link
+            href="/"
+            className={buttonSecondary}
+          >
+            Ta mig tillbaka
+          </Link>
+        </div>
+      </div>
       </section>
     </main>
   );
