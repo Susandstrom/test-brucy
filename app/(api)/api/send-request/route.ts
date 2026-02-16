@@ -1,13 +1,18 @@
-import { NextResponse } from "next/server";
+ import { NextResponse } from "next/server";
 
-export async function POST(request: Request) {
-  const body = await request.json();
-  console.log("Mottagen data:", body);
-  return NextResponse.json({ message: "Request mottagen!" });
+ {/*Skickar meddelande till localhost:3000/send-request */}
+export async function GET() {
+  return NextResponse.json({ message: "Sup!" });
 }
 
-await fetch("/api/send-request", {
-  method: "POST",
-  headers: { "Content-Type": "application/json" },
-  body: JSON.stringify({ name: "Anna" }),
-});
+{/* */}
+export async function POST(request: Request) {
+  try {
+    const body = await request.json();
+    console.log("Mottagen data:", body);
+
+    return NextResponse.json({ message: "POST mottagen!" });
+  } catch (error) {
+    return NextResponse.json({ error: "Något gick fel" }, { status: 500 });
+  }
+}
