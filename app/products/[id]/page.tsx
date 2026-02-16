@@ -15,17 +15,23 @@ export default function ProductPage() {
     {/* hittar rätt id till rätt url */ }
     const { id } = useParams<{ id: string }>();
 
-    {/* Hitta rätt produkt till rätt id */ }
-    const product = products.find((p) => p.id.toString() === id);
-
-    {/* Om något blir fel */ }
-    if (!product) {
+    {/* SÅ att vi kan bläddra genom alla produkter */ }
+    const currentIndex = products.findIndex((p) => p.id.toString() === id);
+    if (currentIndex === -1) {
         return (
             <main className="min-h-screen flex items-center justify-center">
                 <p>Förlåt! Vi kunde inte hitta produkten du söker.</p>
             </main>
         );
+
     }
+
+    {/* nuvarande produkt */ }
+    const product = products[currentIndex];
+
+    {/* Detta är bläddringen */ }
+    const prevProduct = products[currentIndex - 1];
+    const nextProduct = products[currentIndex + 1];
 
     return (
         <main className="min-h-screen">
@@ -69,6 +75,7 @@ export default function ProductPage() {
                         >
                             Lägg i varukorg
                         </button>
+
                         {/* Tillbaka-knapp */}
                         <Link href="/shop" className={buttonSecondary}>
                             Tillbaka till butik
@@ -76,6 +83,32 @@ export default function ProductPage() {
                     </div>
                 </div>
             </div>
-        </main>
+            
+             {/* Blädder-knappar */}
+                    <div className="max-w-4xl mx-auto px-4 py-4 justify-between flex">
+                        {prevProduct ? (
+
+                            <Link
+                                href={`/products/${prevProduct.id}`}
+                                className={buttonSecondary}
+                            >
+                                Föregående
+                            </Link>
+                        ) : (
+                            <div />
+                        )}
+
+                        {nextProduct ? (
+                            <Link
+                                href={`/products/${nextProduct.id}`}
+                                className={buttonSecondary}
+                            >
+                                Nästa
+                            </Link>
+                        ) : (
+                            <div />
+                        )}
+                    </div>
+        </main >
     );
 }
