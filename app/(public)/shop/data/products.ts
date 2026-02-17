@@ -1,5 +1,6 @@
 export type Product = {
   id: number;
+  slug: string;
   name: string;
   description: string;
   price: number;
@@ -9,6 +10,7 @@ export type Product = {
 export const products: Product[] = [
   {
     id: 1,
+    slug: "biryani-krydda",
     name: "Biryani krydda",
     description: "Autentisk kryddblandning",
     price: 89,
@@ -16,6 +18,7 @@ export const products: Product[] = [
   },
   {
     id: 2,
+    slug: "liten-stekpanna-blomma",
     name: "Liten stekpanna - Blomma",
     description: "Mindre stekpanna (29cm) formad som en blomma.",
     price: 199,
@@ -23,6 +26,7 @@ export const products: Product[] = [
   },
   {
     id: 3,
+    slug: "kanelstanger",
     name: "Kanelstänger",
     description: "50g, hela kanelstänger",
     price: 199,
@@ -30,6 +34,7 @@ export const products: Product[] = [
   },
   {
     id: 4,
+    slug: "vit-mortel",
     name: "Vit mortel",
     description: "Liten mortel i marmorstil",
     price: 189,
@@ -37,6 +42,7 @@ export const products: Product[] = [
   },
   {
     id: 5,
+    slug: "peppar-kit",
     name: "Peppar Kit",
     description: "Pepparkvarn med fyra sorters peppar",
     price: 299,
@@ -44,6 +50,7 @@ export const products: Product[] = [
   },
   {
     id: 6,
+    slug:"melodypeppar",
     name: "Melodypeppar",
     description: "Melodypeppar 50g",
     price: 119,
@@ -51,6 +58,7 @@ export const products: Product[] = [
   },
   {
     id: 7,
+    slug: "flaska-for-olivolja",
     name: "Flaska för olivolja",
     description: "Stilren flaska för olivolja",
     price: 289,
@@ -58,6 +66,7 @@ export const products: Product[] = [
   },
   {
     id: 8,
+    slug: "stjarnanis",
     name: "Stjärnanis",
     description: "50g, förhöj dina smaklökar",
     price: 169,

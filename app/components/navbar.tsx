@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { useCart } from "../context/CartContext";
+import { useCart } from "../(public)/cart/context/CartContext";
 
 export default function Navbar() {
   const [dropdownOpen, setDropdownOpen] = useState(false); // för mobil dropdown
@@ -40,19 +40,19 @@ export default function Navbar() {
             </Link>
             <div className="absolute right-0 mt-2 w-48 bg-white border rounded shadow-lg z-10 opacity-0 group-hover:opacity-100 transition">
               <Link
-                href="/biryani"
+                href="/recipe/biryani"
                 className="block px-4 py-2 hover:bg-gray-100 transition"
               >
                 Biryani
               </Link>
               <Link
-                href="/hamburger"
+                href="/recipe/hamburger"
                 className="block px-4 py-2 hover:bg-gray-100 transition"
               >
                 Hamburger
               </Link>
               <Link
-                href="/korvstroganof"
+                href="/recipe/korvstroganof"
                 className="block px-4 py-2 hover:bg-gray-100 transition"
               >
                 Korvstroganof

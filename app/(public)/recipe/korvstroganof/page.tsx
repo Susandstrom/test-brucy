@@ -1,6 +1,6 @@
 import Link from "next/link";
-import Hero from "../components/hero";
-import { buttonSecondary } from "../styles";
+import Hero from "@/app/components/hero";
+import { buttonSecondary } from "@/app/styles";
 
 export default function KorvstroganofPage() {
   return (
@@ -96,14 +96,14 @@ export default function KorvstroganofPage() {
       <div className="mt-8 px-4">
         <div className="mx-auto max-w-5xl flex justify-between">
           <Link
-            href="/hamburger"
+            href="/recipe/hamburger"
             className={buttonSecondary}
           >
             ← Föregående recept
           </Link>
 
           <Link
-            href="/biryani"
+            href="/recipe/biryani"
             className={buttonSecondary}
           >
             Nästa recept →

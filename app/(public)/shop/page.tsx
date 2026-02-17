@@ -1,10 +1,10 @@
 "use client";
 
-import Hero from "../components/hero";
-import { useCart } from "../context/CartContext";
+import Hero from "@/app/components/hero";
+import { useCart } from "../cart/context/CartContext";
 import Link from "next/link";
-import { products } from "../data/products";
-import { buttonPrimary, buttonSecondary } from "../styles";
+import { products } from "./data/products";
+import { buttonPrimary, buttonSecondary } from "@/app/styles";
 import Image from "next/image";
 
 export default function ShopPage() {
@@ -29,7 +29,7 @@ export default function ShopPage() {
             >
               <div className="flex flex-col flex-1 p-6">
                 <Link
-                  href={`/products/${product.id}`}
+                  href={`/shop/products/${product.slug}`}
                   className="flex flex-col flex-1"
                 >
                   <Image

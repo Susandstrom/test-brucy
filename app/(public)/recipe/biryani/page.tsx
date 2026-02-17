@@ -1,6 +1,6 @@
 import Link from "next/link";
-import Hero from "../components/hero";
-import { buttonSecondary } from "../styles";
+import Hero from "@/app/components/hero";
+import { buttonSecondary } from "@/app/styles";
 
 export default function BiryaniPage() {
   return (
@@ -114,7 +114,7 @@ export default function BiryaniPage() {
         {/* Knappar */}
         <div className="mt-8 mx-auto max-w-5xl flex items-center justify-between px-4">
           <Link
-            href="/korvstroganof"
+            href="/recipe/korvstroganof"
             className={buttonSecondary}
           >
             ← Föregående recept

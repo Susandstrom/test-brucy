@@ -2,8 +2,8 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
-import Hero from "../components/hero";
-import { buttonPrimary, buttonSecondary } from "../styles";
+import Hero from "@/app/components/hero";
+import { buttonPrimary, buttonSecondary } from "@/app/styles";
 import Image from "next/image";
 
 export default function ContactPage() {

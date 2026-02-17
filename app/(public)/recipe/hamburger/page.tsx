@@ -1,6 +1,6 @@
 import Link from "next/link";
-import Hero from "../components/hero";
-import { buttonSecondary } from "../styles";
+import Hero from "@/app/components/hero";
+import { buttonSecondary } from "@/app/styles";
 
 export default function HamburgerPage() {
   return (
@@ -125,7 +125,7 @@ export default function HamburgerPage() {
       <div className="mt-8 px-4">
         <div className="mx-auto max-w-5xl flex justify-end">
           <Link
-            href="/korvstroganof"
+            href="/recipe/korvstroganof"
             className={buttonSecondary}
           >
             Nästa recept →

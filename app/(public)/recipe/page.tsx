@@ -1,6 +1,6 @@
 import Link from "next/link"; // Detta är receptsidan
-import Hero from "../components/hero";
-import { buttonSecondary } from "../styles";
+import Hero from "@/app/components/hero";
+import { buttonSecondary } from "@/app/styles";
 
 export default function RecipePage() {
   return (
@@ -21,7 +21,7 @@ export default function RecipePage() {
 
         <div className="grid gap-8 sm:grid-cols-2 md:grid-cols-3">
           <Link
-            href="/hamburger"
+            href="/recipe/hamburger"
             className="group rounded-2xl bg-white p-6 shadow-md transition hover:-translate-y-1 hover:shadow-xl"
           >
             <img
@@ -35,7 +35,7 @@ export default function RecipePage() {
           </Link>
 
           <Link
-            href="/biryani"
+            href="/recipe/biryani"
             className="group rounded-2xl bg-white p-6 shadow-md transition hover:-translate-y-1 hover:shadow-xl"
           >
             <img
@@ -49,7 +49,7 @@ export default function RecipePage() {
           </Link>
 
           <Link
-            href="/korvstroganof"
+            href="/recipe/hamburger"
             className="group rounded-2xl bg-white p-6 shadow-md transition hover:-translate-y-1 hover:shadow-xl"
           >
             <img
