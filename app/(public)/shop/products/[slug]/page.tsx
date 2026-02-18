@@ -32,10 +32,10 @@ export default function ProductPage() {
       <Hero
         title="Hem"
         subtitle="Från hjärtat och till ditt middagsbord"
-        image="/images/kronärtskocka.jpg"
+        image="/images/fruktOgrönt.jpg"
         titlecolor="text-white"
         subtitlecolor="text-white/90"
-        stylePosition="40% 20%"
+        stylePosition="50% 10%"
       />
 
       {/* Produktinformation */}
