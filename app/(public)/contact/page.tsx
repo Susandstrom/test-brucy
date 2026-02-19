@@ -9,21 +9,43 @@ import Image from "next/image";
 export default function ContactPage() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
   const [message, setMessage] = useState("");
 
-  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-    console.log({ name, email, message });
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  e.preventDefault();
+
+  try {
+    const response = await fetch("/api/contact", {  // OBS: med snedstreck!
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",       // OBS: stor C
+      },
+      body: JSON.stringify({ name, phone, email, message }),
+    });
+
+    const json = await response.json();
+    console.log("Response från API:", json);    // <-- viktigt för debug
+
+    if (!response.ok) {
+      throw new Error(json.error || "Kunde inte skicka meddelandet");
+    }
+
     alert("Tack för ditt meddelande!");
     setName("");
     setEmail("");
+    setPhone("");
     setMessage("");
+  } catch (error) {
+    console.error(error);
+    alert("Kunde inte skicka meddelandet.");
   }
+}
+
 
   return (
     <main className="min-h-screen flex flex-col items-center">
-
-      {/* HERO-bild */}
+      {/* HERO */}
       <Hero
         title="Kontakta oss"
         image="/images/strawberries.jpg"
@@ -31,12 +53,11 @@ export default function ContactPage() {
         subtitlecolor="text-white/90"
       />
 
-      {/* Text + Bild + Formulär */}
+      {/* Form + Text */}
       <div className="px-4 py-16 w-full max-w-6xl">
-        <div className="bg-white rounded-2xl shadow-md p-10 flex flex-col md:flex-row gap-12 items-start"> {/* ändrat items-center -> items-start */}
-
-          {/* Text + Bild */}
-          <div className="md:w-1/2 flex flex-col items-start text-left"> {/* behåller items-start */}
+        <div className="bg-white rounded-2xl shadow-md p-10 flex flex-col md:flex-row gap-12 items-start">
+          {/* Bild + Text */}
+          <div className="md:w-1/2 flex flex-col items-start text-left">
             <Image
               src="/images/picnic.jpg"
               alt="Kontakt"
@@ -51,44 +72,59 @@ export default function ContactPage() {
           </div>
 
           {/* Formulär */}
-          <form onSubmit={handleSubmit} className="md:w-1/2 flex flex-col gap-4 w-full">
+          <form
+            onSubmit={handleSubmit}
+            className="md:w-1/2 flex flex-col gap-4 w-full"
+          >
             <div>
-              <label className="block mb-1 font-semibold">Namn</label>
+              <label className="block mb-1 font-semibold text-left">Namn</label>
               <input
                 type="text"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 required
+                placeholder="Jane Doe"
                 className="w-full p-3 rounded-xl border"
               />
             </div>
 
             <div>
-              <label className="block mb-1 font-semibold">E-post</label>
+              <label className="block mb-1 font-semibold text-left">E-post</label>
               <input
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
+                placeholder="jane@info.se"
                 className="w-full p-3 rounded-xl border"
               />
             </div>
 
             <div>
-              <label className="block mb-1 font-semibold">Meddelande</label>
-              <textarea
-                value={message}
-                onChange={(e) => setMessage(e.target.value)}
-                rows={6}
+              <label className="block mb-1 font-semibold text-left">Telefonnummer</label>
+              <input
+                type="phone"
+                value={phone}
+                onChange={(e) => setPhone(e.target.value)}
                 required
+                placeholder="+46700000000"
                 className="w-full p-3 rounded-xl border"
               />
             </div>
 
-            <button
-              type="submit"
-              className={buttonPrimary}
-            >
+            <div>
+              <label className="block mb-1 font-semibold text-left">Meddelande</label>
+              <textarea
+                value={message}
+                onChange={(e) => setMessage(e.target.value)}
+                rows={6}
+                required 
+                placeholder="Skriv ditt meddelande här..."
+                className="w-full p-3 rounded-xl border"
+              />
+            </div>
+
+            <button type="submit" className={buttonPrimary}>
               Skicka
             </button>
           </form>
@@ -96,10 +132,7 @@ export default function ContactPage() {
 
         {/* Tillbaka-knapp */}
         <div className="mt-8 flex justify-end">
-          <Link
-            href="/"
-            className={buttonSecondary}
-          >
+          <Link href="/" className={buttonSecondary}>
             Ta mig tillbaka
           </Link>
         </div>
