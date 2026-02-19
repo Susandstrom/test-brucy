@@ -47,10 +47,8 @@ export function EmailTemplate({
                 Vi ser fram emot att svara dig och gör det så fort vi kan. 
               </p>
                <p style={{ fontSize: "16px", marginBottom: "15px" }}>
-                Med vänliga hälsningar
-              </p>
-               <p style={{ fontSize: "16px", marginBottom: "15px" }}>
-                personalen, Grönaboken
+                Med vänliga hälsningar, 
+                Personalen på Grönaboken
               </p>
 
 
