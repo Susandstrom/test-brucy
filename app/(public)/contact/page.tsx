@@ -6,6 +6,7 @@ import Hero from "@/app/components/hero";
 import { buttonPrimary, buttonSecondary } from "@/app/styles";
 import Image from "next/image";
 
+//inställningar i min FORM
 export default function ContactPage() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -42,7 +43,7 @@ export default function ContactPage() {
   }
 }
 
-
+//FORM-utseende
   return (
     <main className="min-h-screen flex flex-col items-center">
       {/* HERO */}

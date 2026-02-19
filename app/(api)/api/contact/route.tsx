@@ -2,8 +2,10 @@ import { EmailTemplate } from "@/app/components/email-template";
 import { Resend } from "resend";
 import { render } from "@react-email/render";
 
+//Min API-nyckel-länk
 const resend = new Resend(process.env.RESEND_API_KEY);
 
+//POST för min mejl-funktion
 export async function POST(request: Request) {
   try {
     const body = await request.json();
@@ -15,7 +17,7 @@ export async function POST(request: Request) {
 
     const html = await render(<EmailTemplate name={name} email={email} message={message} />);
 
-    // skicka mailet
+    // skicka mailet med information
     const data = await resend.emails.send({
       from: "Grönaboken <gronaboken@resend.dev>",
       to: ["suthada@brucy.io"], 

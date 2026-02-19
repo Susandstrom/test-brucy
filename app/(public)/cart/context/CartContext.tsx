@@ -52,6 +52,7 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
   );
 }
 
+//skickar min CART
 export function useCart() {
   const context = useContext(CartContext);
   if (!context) {
