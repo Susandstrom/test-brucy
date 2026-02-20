@@ -52,6 +52,8 @@ export default function CartPage() {
           <p className="text-xl font-bold">Totalt: {totalPrice} KR</p>
         </div>
       </div>
+      
+      {/* Knappar */}
        <div className="mt-8 flex justify-center gap-6">
             <Link
               href="/"
