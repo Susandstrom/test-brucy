@@ -52,20 +52,19 @@ export default function CartPage() {
           <p className="text-xl font-bold">Totalt: {totalPrice} KR</p>
         </div>
       </div>
-      
+
       {/* Knappar */}
-       <div className="mt-8 flex justify-center gap-6">
-            <Link
-              href="/"
-              className={`${buttonSecondary} w-40 text-center`}
-            >
-              Ta mig tillbaka
-            </Link>
-            <Link
-        href="/"
-        className={`${buttonPrimary} w-40 text-center`}
-        >Betala</Link>
-          </div>
+      <div className="mt-8 flex justify-center gap-6">
+        <Link
+          href="/"
+          className={`${buttonSecondary} w-40 text-center`}
+        >
+          Ta mig tillbaka
+        </Link>
+        <button onClick={handleCheckout}
+          className={`${buttonPrimary} w-40 text-center`}
+        >Betala</button>
+      </div>
     </main>
   );
 }
