@@ -1,8 +1,8 @@
-// app/cart/page.tsx
 "use client";
 
 import { useCart } from "./context/CartContext";
 import Link from "next/link";
+import { buttonPrimary, buttonSecondary } from "@/app/styles";
 
 export default function CartPage() {
   const { cart, removeFromCart, totalPrice } = useCart();
@@ -52,13 +52,17 @@ export default function CartPage() {
           <p className="text-xl font-bold">Totalt: {totalPrice} KR</p>
         </div>
       </div>
-       <div className="mt-8 flex justify-center">
+       <div className="mt-8 flex justify-center gap-6">
             <Link
               href="/"
-              className="inline-block rounded-2xl bg-white border px-8 py-3 font-semibold shadow-md hover:bg-gray-100 transition"
+              className={`${buttonSecondary} w-40 text-center`}
             >
               Ta mig tillbaka
             </Link>
+            <Link
+        href="/"
+        className={`${buttonPrimary} w-40 text-center`}
+        >Betala</Link>
           </div>
     </main>
   );
