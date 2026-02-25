@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import { useState } from "react";
 import Link from "next/link";
 import Hero from "@/app/components/hero";
 import { buttonPrimary, buttonSecondary } from "@/app/styles";
@@ -13,20 +13,22 @@ export default function ContactPage() {
   const [phone, setPhone] = useState("");
   const [message, setMessage] = useState("");
 
-  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+async function handleSubmit(
+  e: React.FormEvent<HTMLFormElement>
+) {
   e.preventDefault();
 
   try {
-    const response = await fetch("/api/contact", {  // OBS: med snedstreck!
+    const response = await fetch("/api/contact", {
       method: "POST",
       headers: {
-        "Content-Type": "application/json",       // OBS: stor C
+        "Content-Type": "application/json",     
       },
       body: JSON.stringify({ name, phone, email, message }),
     });
 
     const json = await response.json();
-    console.log("Response från API:", json);    // <-- viktigt för debug
+    console.log("Response från API:", json);    //används för att hitta t.ex. buggar 
 
     if (!response.ok) {
       throw new Error(json.error || "Kunde inte skicka meddelandet");
@@ -104,7 +106,7 @@ export default function ContactPage() {
             <div>
               <label className="block mb-1 font-semibold text-left">Telefonnummer</label>
               <input
-                type="phone"
+                type="tel"
                 value={phone}
                 onChange={(e) => setPhone(e.target.value)}
                 required

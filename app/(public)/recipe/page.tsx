@@ -13,7 +13,7 @@ export default function RecipePage() {
         stylePosition="50% 10%"
       />
 
-      {/* Mina recept */}
+      {/* Mina recept-länkar */}
       <section className="px-4 py-16 max-w-7xl mx-auto">
         <h2 className="text-3xl font-bold mb-8 text-left">
           Alla mina favoritrecept

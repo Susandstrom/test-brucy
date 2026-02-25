@@ -52,6 +52,12 @@ export default function CartPage() {
         <div className="mt-8 flex justify-center gap-6">
           <Link
             href="/"
+            className={`${buttonPrimary} w-40 text-center`}
+          >
+            Ta mig hem
+          </Link>
+          <Link
+            href="/shop"
             className={`${buttonSecondary} w-40 text-center`}
           >
             Ta mig tillbaka
@@ -104,7 +110,7 @@ export default function CartPage() {
       {/* Mina knappar */}
       <div className="mt-8 flex justify-center gap-6">
         <Link
-          href="/"
+          href="/shop"
           className={`${buttonSecondary} w-40 text-center`}
         >
           Ta mig tillbaka
