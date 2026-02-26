@@ -23,7 +23,7 @@ export function OrderEmailTemplate({
   phoneNumber,
   address,
   items,
-  total,
+  total, 
 }: OrderEmailTemplateProps) {
   return (
     <div

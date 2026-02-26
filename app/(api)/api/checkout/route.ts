@@ -30,7 +30,7 @@ export async function POST(request: Request) {
             phone_number_collection: {
                 enabled: true,
             },
-            success_url: `${process.env.NEXT_PUBLIC_SITE_URL}/cart/success`,//Sidan du hamnar på om betalningen gick igenom och en beställning blev lagd
+            success_url: `${process.env.NEXT_PUBLIC_SITE_URL}/cart/success?session_id={CHECKOUT_SESSION_ID}`,//Sidan du hamnar på om betalningen gick igenom och en beställning blev lagd
             cancel_url: `${process.env.NEXT_PUBLIC_SITE_URL}/cart/cancel`,//Sidan du hamnar på om du avbryter eller något blev fel
         });
 
