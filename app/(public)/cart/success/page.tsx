@@ -3,33 +3,28 @@
 import Link from "next/link";
 import { buttonSecondary } from "@/app/styles";
 import { useEffect, useRef } from "react";
-import { useCart } from "../context/CartContext";
+import { useCart } from "../context/cartContext";
 
 export default function SuccessPage() {
-  const { cart, clearCart } = useCart();
-  const hasSent = useRef(false); // hindrar dubbla mejl till kund
-
-  useEffect(() => {
-  console.log("Cart on success:", cart);
-}, [cart]);
+  const { clearCart } = useCart();
+  const hasSent = useRef(false);
 
   useEffect(() => {
     async function sendOrder() {
       if (hasSent.current) return;
 
       const savedOrder = localStorage.getItem("pendingOrder");
-
-      hasSent.current = true;
-
-      if(!savedOrder){
-        console.log("Ingen order hittad");
-        return;
-      }
+      if (!savedOrder) return;
 
       const parsedCart = JSON.parse(savedOrder);
+      if (!parsedCart.length) return;
 
-      if(!parsedCart.length) {
-        console.log("sparad CART är tom");
+      const sessionId = new URLSearchParams(window.location.search).get(
+        "session_id"
+      );
+
+      if (!sessionId) {
+        console.log("Ingen session_id");
         return;
       }
 
@@ -40,34 +35,24 @@ export default function SuccessPage() {
         0
       );
 
-      try {
-       const response = await fetch("/api/send-order", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            firstName: "Anna",
-            lastName: "test",
-            email: "suthada@brucy.io",
-            phoneNumber: "0700000000",
-            address: "testgatan 1",
-            items: parsedCart.map((item: any) => ({
-              productName: item.name,
-              quantity: item.quantity,
-              price: item.price,
-            })),
-            total,
-          }),
-        });
-        const result = await response.json();
-        console.log("Order API response:", result);
+      await fetch("/api/send-order", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          sessionId,
+          items: parsedCart.map((item: any) => ({
+            productName: item.name,
+            quantity: item.quantity,
+            price: item.price,
+          })),
+          total,
+        }),
+      });
 
-        localStorage.removeItem("pendingOrder");
-        clearCart();
-      } catch (error) {
-        console.error("Order error:", error);
-      }
+      localStorage.removeItem("pendingOrder");
+      clearCart();
     }
 
     sendOrder();

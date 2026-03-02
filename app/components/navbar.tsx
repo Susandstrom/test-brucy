@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { useCart } from "../(public)/cart/context/CartContext";
+import { useCart } from "../(public)/cart/context/cartContext";
 
 export default function Navbar() {
   const [dropdownOpen, setDropdownOpen] = useState(false); // för mobil dropdown

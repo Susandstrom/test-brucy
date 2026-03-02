@@ -4,7 +4,7 @@ import { Barlow, Barlow_Condensed } from "next/font/google";
 import "./globals.css";
 import Navbar from "./components/navbar";
 import Footer from "./components/footer";
-import { CartProvider } from "./(public)/cart/context/CartContext";
+import { CartProvider } from "./(public)/cart/context/cartContext";
 
 /* Brödtext */
 const barlow = Barlow({

@@ -1,14 +1,14 @@
 "use client";
 
-import { useCart } from "./context/CartContext";
+import { useCart } from "./context/cartContext";
 import Link from "next/link";
 import { buttonPrimary, buttonSecondary } from "@/app/styles";
 
 //CART
 export default function CartPage() {
-  const { cart, removeFromCart, totalPrice } = useCart();
+  const { cart, removeFromCart, updateQuantity, totalPrice } = useCart();
 
-  //Betala-funktioner för min knapp "Betala"
+  //Betala-funktioner
   async function handleCheckout() {
     try {
       localStorage.setItem("pendingOrder", JSON.stringify(cart));
@@ -30,7 +30,6 @@ export default function CartPage() {
 
       const data = await response.json();
 
-      //error-meddelanden
       if (data.url) {
         window.location.href = data.url;
       } else {
@@ -42,7 +41,7 @@ export default function CartPage() {
     }
   }
 
-  //Cart - om den är tom
+  // tom kundvagn
   if (cart.length === 0) {
     return (
       <main className="min-h-screen flex flex-col items-center justify-center">
@@ -51,18 +50,11 @@ export default function CartPage() {
           Lägg till produkter i din varukorg för att se dem här.
         </p>
 
-        {/*tillbaka-knapp*/}
         <div className="mt-8 flex justify-center gap-6">
-          <Link
-            href="/"
-            className={`${buttonPrimary} w-40 text-center`}
-          >
+          <Link href="/" className={`${buttonPrimary} w-40 text-center`}>
             Ta mig hem
           </Link>
-          <Link
-            href="/shop"
-            className={`${buttonSecondary} w-40 text-center`}
-          >
+          <Link href="/shop" className={`${buttonSecondary} w-40 text-center`}>
             Ta mig tillbaka
           </Link>
         </div>
@@ -70,7 +62,6 @@ export default function CartPage() {
     );
   }
 
-  //Cart - med produkter
   return (
     <main className="min-h-screen px-4 py-12">
       <h1 className="text-3xl font-bold text-center mb-8">
@@ -88,14 +79,35 @@ export default function CartPage() {
               alt={item.name}
               className="w-24 h-24 object-cover rounded-xl"
             />
+
             <div className="flex-1">
               <h2 className="text-xl font-semibold">{item.name}</h2>
-              <p className="text-gray-600">Antal: {item.quantity}</p>
+
+              {/* plus/minus */}
+              <div className="flex items-center gap-3 mt-2">
+                <button
+                  onClick={() => updateQuantity(item.id, -1)}
+                  className="bg-green-500 text-white w-8 h-8 rounded-lg"
+                >
+                  –
+                </button>
+
+                <span>{item.quantity}</span>
+
+                <button
+                  onClick={() => updateQuantity(item.id, 1)}
+                  className="bg-green-500 text-white w-8 h-8 rounded-lg"
+                >
+                  +
+                </button>
+              </div>
+
               <p className="text-gray-800 font-bold mt-2">
                 {item.price * item.quantity} SEK
               </p>
             </div>
-            {/* Knapp - ta bort varor i CART */}
+
+            {/* ta bort */}
             <button
               onClick={() => removeFromCart(item.id)}
               className="bg-red-600 text-white px-4 py-2 rounded-xl hover:bg-red-700"
@@ -110,12 +122,8 @@ export default function CartPage() {
         </div>
       </div>
 
-      {/* Mina knappar */}
       <div className="mt-8 flex justify-center gap-6">
-        <Link
-          href="/shop"
-          className={`${buttonSecondary} w-40 text-center`}
-        >
+        <Link href="/shop" className={`${buttonSecondary} w-40 text-center`}>
           Ta mig tillbaka
         </Link>
 
