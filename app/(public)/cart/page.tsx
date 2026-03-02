@@ -4,11 +4,11 @@ import { useCart } from "./context/cartContext";
 import Link from "next/link";
 import { buttonPrimary, buttonSecondary } from "@/app/styles";
 
-//CART
+// CART
 export default function CartPage() {
   const { cart, removeFromCart, updateQuantity, totalPrice } = useCart();
 
-  //Betala-funktioner
+  // checkout
   async function handleCheckout() {
     try {
       localStorage.setItem("pendingOrder", JSON.stringify(cart));
@@ -87,7 +87,7 @@ export default function CartPage() {
               <div className="flex items-center gap-3 mt-2">
                 <button
                   onClick={() => updateQuantity(item.id, -1)}
-                  className="bg-green-500 text-white w-8 h-8 rounded-lg"
+                  className="bg-green-600 text-white px-4 py-2 rounded-lg"
                 >
                   –
                 </button>
@@ -96,7 +96,7 @@ export default function CartPage() {
 
                 <button
                   onClick={() => updateQuantity(item.id, 1)}
-                  className="bg-green-500 text-white w-8 h-8 rounded-lg"
+                  className="bg-green-600 text-white px-4 py-2 rounded-lg"
                 >
                   +
                 </button>

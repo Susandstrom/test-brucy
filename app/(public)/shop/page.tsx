@@ -6,47 +6,55 @@ import Link from "next/link";
 import { products } from "./data/products";
 import { buttonPrimary, buttonSecondary } from "@/app/styles";
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function ShopPage() {
   const { addToCart, cart } = useCart();
 
-  // antal per produkt
+  // antal per produkt (lokal state)
   const [quantities, setQuantities] = useState<Record<number, number>>({});
 
-  // vilka som är tillagda (färgbyte)
+  // färgbyte när tillagd
   const [added, setAdded] = useState<Record<number, boolean>>({});
+
+  // synka quantities från kundvagnen
+  useEffect(() => {
+    const newQuantities: Record<number, number> = {};
+    const newAdded: Record<number, boolean> = {};
+
+    cart.forEach((item) => {
+      newQuantities[item.id] = item.quantity;
+      newAdded[item.id] = true;
+    });
+
+    setQuantities(newQuantities);
+    setAdded(newAdded);
+  }, [cart]);
 
   function increase(id: number) {
     setQuantities((prev) => ({
       ...prev,
-      [id]: (prev[id] || 1) + 1,
+      [id]: (prev[id] || 0) + 1,
     }));
   }
 
   function decrease(id: number) {
     setQuantities((prev) => ({
       ...prev,
-      [id]: Math.max(1, (prev[id] || 1) - 1),
+      [id]: Math.max(0, (prev[id] || 0) - 1),
     }));
   }
 
   function handleAdd(product: any) {
-    const quantity = quantities[product.id] || 1;
+    const quantity = quantities[product.id] || 0;
 
-    addToCart(product, quantity);
-
-    // färgbyte när tillagd
-    setAdded((prev) => ({
-      ...prev,
-      [product.id]: true,
-    }));
-
-    // reset quantity (valfritt)
-    setQuantities((prev) => ({
-      ...prev,
-      [product.id]: 1,
-    }));
+    if (quantity > 0) {
+      addToCart(product, quantity);
+      setAdded((prev) => ({
+        ...prev,
+        [product.id]: true,
+      }));
+    }
   }
 
   return (
@@ -61,7 +69,7 @@ export default function ShopPage() {
       <div className="max-w-7xl mx-auto px-4 py-12">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {products.map((product) => {
-            const qty = quantities[product.id] || 1;
+            const qty = quantities[product.id] || 0;
             const isAdded = added[product.id];
 
             return (
@@ -89,13 +97,13 @@ export default function ShopPage() {
                     <p className="font-bold mt-4">{product.price} kr</p>
                   </Link>
 
-                  {/* antal */}
+                  {/* antal (synkat med cart) */}
                   <div className="w-full mt-6">
                     <div className="flex w-full border border-green-300 rounded-xl overflow-hidden">
 
                       <button
                         onClick={() => decrease(product.id)}
-                        className="flex-1 py-2 text-green-700 hover:bg-green-50 transition"
+                        className="flex-1 py-2 text-green-700 hover:bg-green-100 transition"
                       >
                         –
                       </button>
@@ -106,7 +114,7 @@ export default function ShopPage() {
 
                       <button
                         onClick={() => increase(product.id)}
-                        className="flex-1 py-2 text-green-700 hover:bg-green-50 transition"
+                        className="flex-1 py-2 text-green-700 hover:bg-green-100 transition"
                       >
                         +
                       </button>

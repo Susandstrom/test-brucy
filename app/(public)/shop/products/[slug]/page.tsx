@@ -7,18 +7,13 @@ import { products } from "../../data/products";
 import { buttonPrimary, buttonSecondary, buttonThird } from "@/app/styles";
 import { useCart } from "@/app/(public)/cart/context/cartContext";
 import Hero from "@/app/components/hero";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function ProductPage() {
-  const { addToCart } = useCart();
+  const { addToCart, cart, updateQuantity } = useCart();
   const { slug } = useParams<{ slug: string }>();
 
-  const [quantity, setQuantity] = useState(1);
-  const [added, setAdded] = useState(false);
-
-  const currentIndex = products.findIndex(
-    (p) => p.slug.toString() === slug
-  );
+  const currentIndex = products.findIndex((p) => p.slug.toString() === slug);
 
   if (currentIndex === -1) {
     return (
@@ -32,22 +27,35 @@ export default function ProductPage() {
   const prevProduct = products[currentIndex - 1];
   const nextProduct = products[currentIndex + 1];
 
+  // hämta befintligt antal från kundvagnen
+  const existing = cart.find((item) => item.id === product.id);
+
+  const [quantity, setQuantity] = useState(existing?.quantity ?? 0);
+  const [added, setAdded] = useState(!!existing);
+
+  useEffect(() => {
+    if (existing) {
+      setQuantity(existing.quantity);
+      setAdded(true);
+    } else {
+      setQuantity(0);
+      setAdded(false);
+    }
+  }, [existing]);
+
   function increase() {
     setQuantity((q) => q + 1);
   }
 
   function decrease() {
-    setQuantity((q) => Math.max(1, q - 1));
-  }
-
-  function handleInputChange(value: string) {
-    const num = parseInt(value, 10);
-    setQuantity(isNaN(num) || num < 1 ? 1 : num);
+    setQuantity((q) => Math.max(0, q - 1));
   }
 
   function handleAddToCart() {
-    addToCart(product, quantity);
-    setAdded(true);
+    if (quantity > 0) {
+      addToCart(product, quantity);
+      setAdded(true);
+    }
   }
 
   return (
@@ -80,26 +88,36 @@ export default function ProductPage() {
             <p className="text-gray-500">{product.description}</p>
           </div>
 
-          {/* pris + antal */}
+          {/* pris + antal (minimalistisk & hover) */}
           <div className="flex flex-col items-center justify-end mt-auto mb-4">
             <p className="text-2xl font-bold">{product.price} kr</p>
 
-            <div className="flex items-center gap-4 mt-4">
-              <button onClick={decrease} className={buttonThird}>
-                -
-              </button>
+            <div className="w-full mt-4">
+              <div className="flex w-full border border-green-300 rounded-xl overflow-hidden">
 
-              <input
-                type="number"
-                value={quantity}
-                onChange={(e) => handleInputChange(e.target.value)}
-                className="w-16 text-center border rounded-xl py-1"
-                min={1}
-              />
+                <button
+                  onClick={decrease}
+                  className="flex-1 py-2 text-green-700
+                             hover:bg-green-100 hover:text-green-800
+                             transition"
+                >
+                  –
+                </button>
 
-              <button onClick={increase} className={buttonThird}>
-                +
-              </button>
+                <div className="flex-1 flex items-center justify-center text-sm font-medium text-gray-800">
+                  {quantity}
+                </div>
+
+                <button
+                  onClick={increase}
+                  className="flex-1 py-2 text-green-700
+                             hover:bg-green-100 hover:text-green-800
+                             transition"
+                >
+                  +
+                </button>
+
+              </div>
             </div>
           </div>
 
@@ -112,7 +130,7 @@ export default function ProductPage() {
                 : `${buttonPrimary}`
             }
           >
-            {added ? "Tillagd ✓" : "Lägg i varukorg"}
+            {added ? "Uppdaterad ✓" : "Lägg i varukorg"}
           </button>
 
           <div className="flex flex-col gap-4 mt-4">
