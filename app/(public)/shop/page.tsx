@@ -91,28 +91,28 @@ export default function ShopPage() {
 
                   {/* antal */}
                   <div className="w-full mt-6">
-  <div className="flex w-full border border-green-600 rounded-2xl overflow-hidden">
+                    <div className="flex w-full border border-green-300 rounded-xl overflow-hidden">
 
-    <button
-      onClick={() => decrease(product.id)}
-      className="bg-green-600 text-white flex-1 py-2 hover:bg-green-700 transition"
-    >
-      –
-    </button>
+                      <button
+                        onClick={() => decrease(product.id)}
+                        className="flex-1 py-2 text-green-700 hover:bg-green-50 transition"
+                      >
+                        –
+                      </button>
 
-    <div className="flex-1 flex items-center justify-center text-sm font-medium bg-white">
-      {qty}
-    </div>
+                      <div className="flex-1 flex items-center justify-center text-sm font-medium text-gray-800">
+                        {qty}
+                      </div>
 
-    <button
-      onClick={() => increase(product.id)}
-      className="bg-green-600 text-white flex-1 py-2 hover:bg-green-700 transition"
-    >
-      +
-    </button>
+                      <button
+                        onClick={() => increase(product.id)}
+                        className="flex-1 py-2 text-green-700 hover:bg-green-50 transition"
+                      >
+                        +
+                      </button>
 
-  </div>
-</div>
+                    </div>
+                  </div>
 
                   {/* add to cart */}
                   <button
