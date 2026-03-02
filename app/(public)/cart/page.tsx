@@ -11,6 +11,9 @@ export default function CartPage() {
   //Betala-funktioner för min knapp "Betala"
   async function handleCheckout() {
     try {
+      localStorage.setItem("pendingOrder", JSON.stringify(cart));
+      console.log("sparar order:", cart);
+
       const response = await fetch("/api/checkout", {
         method: "POST",
         headers: {

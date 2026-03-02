@@ -10,18 +10,38 @@ export default function SuccessPage() {
   const hasSent = useRef(false); // hindrar dubbla mejl till kund
 
   useEffect(() => {
+  console.log("Cart on success:", cart);
+}, [cart]);
+
+  useEffect(() => {
     async function sendOrder() {
-      if (!cart.length || hasSent.current) return;
+      if (hasSent.current) return;
+
+      const savedOrder = localStorage.getItem("pendingOrder");
 
       hasSent.current = true;
 
-      const total = cart.reduce(
-        (sum, item) => sum + item.price * item.quantity,
+      if(!savedOrder){
+        console.log("Ingen order hittad");
+        return;
+      }
+
+      const parsedCart = JSON.parse(savedOrder);
+
+      if(!parsedCart.length) {
+        console.log("sparad CART är tom");
+        return;
+      }
+
+      hasSent.current = true;
+
+      const total = parsedCart.reduce(
+        (sum: number, item: any) => sum + item.price * item.quantity,
         0
       );
 
       try {
-        await fetch("/api/send-order", {
+       const response = await fetch("/api/send-order", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -32,7 +52,7 @@ export default function SuccessPage() {
             email: "suthada@brucy.io",
             phoneNumber: "0700000000",
             address: "testgatan 1",
-            items: cart.map((item) => ({
+            items: parsedCart.map((item: any) => ({
               productName: item.name,
               quantity: item.quantity,
               price: item.price,
@@ -40,7 +60,10 @@ export default function SuccessPage() {
             total,
           }),
         });
+        const result = await response.json();
+        console.log("Order API response:", result);
 
+        localStorage.removeItem("pendingOrder");
         clearCart();
       } catch (error) {
         console.error("Order error:", error);
@@ -48,7 +71,7 @@ export default function SuccessPage() {
     }
 
     sendOrder();
-  }, [cart, clearCart]);
+  }, [clearCart]);
 
   return (
     <main className="min-h-screen flex flex-col items-center justify-center">
