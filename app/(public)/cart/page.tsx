@@ -80,14 +80,20 @@ export default function CartPage() {
               className="w-24 h-24 object-cover rounded-xl"
             />
 
-            <div className="flex-1">
+            <div className="flex-1 flex items-center justify-between">
+
               <h2 className="text-xl font-semibold">{item.name}</h2>
 
-              {/* plus/minus */}
+              <p className="text-gray-800 font-bold mt-2">
+                {item.price * item.quantity} SEK
+              </p>
+            </div>
+
+             {/* plus/minus */}
               <div className="flex items-center gap-3 mt-2">
                 <button
                   onClick={() => updateQuantity(item.id, -1)}
-                  className="bg-green-600 text-white px-4 py-2 rounded-lg"
+                  className="bg-green-600 text-white px-4 py-2 rounded-xl"
                 >
                   –
                 </button>
@@ -96,24 +102,22 @@ export default function CartPage() {
 
                 <button
                   onClick={() => updateQuantity(item.id, 1)}
-                  className="bg-green-600 text-white px-4 py-2 rounded-lg"
+                  className="bg-green-600 text-white px-4 py-2 rounded-xl"
                 >
                   +
                 </button>
               </div>
 
-              <p className="text-gray-800 font-bold mt-2">
-                {item.price * item.quantity} SEK
-              </p>
-            </div>
 
             {/* ta bort */}
+            <div className="flex items-center gap-3 mt-2">
             <button
               onClick={() => removeFromCart(item.id)}
               className="bg-red-600 text-white px-4 py-2 rounded-xl hover:bg-red-700"
             >
               Ta bort
             </button>
+          </div>
           </div>
         ))}
 
