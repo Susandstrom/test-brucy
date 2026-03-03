@@ -13,7 +13,7 @@ export default function ProductPage() {
   const { addToCart, cart, updateQuantity } = useCart();
   const { slug } = useParams<{ slug: string }>();
 
-  const currentIndex = products.findIndex((p) => p.slug.toString() === slug);
+  const currentIndex = products.findIndex((p) => p.slug === slug);
 
   if (currentIndex === -1) {
     return (
@@ -29,19 +29,15 @@ export default function ProductPage() {
 
   // hämta befintligt antal från kundvagnen
   const existing = cart.find((item) => item.id === product.id);
-
-  const [quantity, setQuantity] = useState(existing?.quantity ?? 0);
-  const [added, setAdded] = useState(!!existing);
+  const [quantity, setQuantity] = useState(existing?.quantity ?? 1);
 
   useEffect(() => {
     if (existing) {
       setQuantity(existing.quantity);
-      setAdded(true);
-    } else {
-      setQuantity(0);
-      setAdded(false);
     }
   }, [existing]);
+
+  const isInCart = cart.some((item) => item.id === product.id);
 
   function increase() {
     setQuantity((q) => q + 1);
@@ -54,7 +50,6 @@ export default function ProductPage() {
   function handleAddToCart() {
     if (quantity > 0) {
       addToCart(product, quantity);
-      setAdded(true);
     }
   }
 
@@ -88,18 +83,15 @@ export default function ProductPage() {
             <p className="text-gray-500">{product.description}</p>
           </div>
 
-          {/* pris + antal (minimalistisk & hover) */}
+          {/* pris + antal */}
           <div className="flex flex-col items-center justify-end mt-auto mb-4">
             <p className="text-2xl font-bold">{product.price} kr</p>
 
             <div className="w-full mt-4">
               <div className="flex w-full border border-green-300 rounded-xl overflow-hidden">
-
                 <button
                   onClick={decrease}
-                  className="flex-1 py-2 text-green-700
-                             hover:bg-green-100 hover:text-green-800
-                             transition"
+                  className="flex-1 py-2 text-green-700 hover:bg-green-100 hover:text-green-800 transition"
                 >
                   –
                 </button>
@@ -110,13 +102,10 @@ export default function ProductPage() {
 
                 <button
                   onClick={increase}
-                  className="flex-1 py-2 text-green-700
-                             hover:bg-green-100 hover:text-green-800
-                             transition"
+                  className="flex-1 py-2 text-green-700 hover:bg-green-100 hover:text-green-800 transition"
                 >
                   +
                 </button>
-
               </div>
             </div>
           </div>
@@ -125,12 +114,12 @@ export default function ProductPage() {
           <button
             onClick={handleAddToCart}
             className={
-              added
+              isInCart
                 ? "bg-green-600 text-white px-4 py-2 rounded-xl"
                 : `${buttonPrimary}`
             }
           >
-            {added ? "Uppdaterad ✓" : "Lägg i varukorg"}
+            {isInCart ? "Uppdaterad ✓" : "Lägg i varukorg"}
           </button>
 
           <div className="flex flex-col gap-4 mt-4">

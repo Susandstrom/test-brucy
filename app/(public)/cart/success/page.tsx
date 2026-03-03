@@ -23,10 +23,7 @@ export default function SuccessPage() {
         "session_id"
       );
 
-      if (!sessionId) {
-        console.log("Ingen session_id");
-        return;
-      }
+      if (!sessionId) return;
 
       hasSent.current = true;
 
@@ -35,21 +32,25 @@ export default function SuccessPage() {
         0
       );
 
-      await fetch("/api/send-order", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          sessionId,
-          items: parsedCart.map((item: any) => ({
-            productName: item.name,
-            quantity: item.quantity,
-            price: item.price,
-          })),
-          total,
-        }),
-      });
+      try {
+        await fetch("/api/send-order", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            sessionId,
+            items: parsedCart.map((item: any) => ({
+              productName: item.name,
+              quantity: item.quantity,
+              price: item.price,
+            })),
+            total,
+          }),
+        });
+      } catch (error) {
+        console.error("Order error:", error);
+      }
 
       localStorage.removeItem("pendingOrder");
       clearCart();

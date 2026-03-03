@@ -4,15 +4,12 @@ import { useCart } from "./context/cartContext";
 import Link from "next/link";
 import { buttonPrimary, buttonSecondary } from "@/app/styles";
 
-// CART
 export default function CartPage() {
-  const { cart, removeFromCart, updateQuantity, totalPrice } = useCart();
+  const { cart, removeFromCart, updateQuantity, totalPrice, clearCart } = useCart();
 
-  // checkout
   async function handleCheckout() {
     try {
       localStorage.setItem("pendingOrder", JSON.stringify(cart));
-      console.log("sparar order:", cart);
 
       const response = await fetch("/api/checkout", {
         method: "POST",
@@ -33,15 +30,14 @@ export default function CartPage() {
       if (data.url) {
         window.location.href = data.url;
       } else {
-        alert("Sorry! Vi kunde inte genomföra betalningen.");
+        alert("Kunde inte genomföra betalningen.");
       }
     } catch (error) {
       console.error(error);
-      alert("Oj! Något gick fel vid checkout!");
+      alert("Något gick fel vid checkout.");
     }
   }
 
-  // tom kundvagn
   if (cart.length === 0) {
     return (
       <main className="min-h-screen flex flex-col items-center justify-center">
@@ -74,50 +70,48 @@ export default function CartPage() {
             key={item.id}
             className="bg-white rounded-xl shadow-md p-6 flex items-center gap-6"
           >
+            {/* Bild */}
             <img
               src={item.image}
               alt={item.name}
               className="w-24 h-24 object-cover rounded-xl"
             />
 
-            <div className="flex-1 flex items-center justify-between">
-
+            {/* Namn + pris */}
+            <div className="flex-1">
               <h2 className="text-xl font-semibold">{item.name}</h2>
-
+              <p className="text-gray-600">Antal: {item.quantity}</p>
               <p className="text-gray-800 font-bold mt-2">
                 {item.price * item.quantity} SEK
               </p>
             </div>
 
-             {/* plus/minus */}
-              <div className="flex items-center gap-3 mt-2">
-                <button
-                  onClick={() => updateQuantity(item.id, -1)}
-                  className="bg-green-600 text-white px-4 py-2 rounded-xl"
-                >
-                  –
-                </button>
+            {/* plus/minus */}
+            <div className="flex items-center gap-3">
+              <button
+                onClick={() => updateQuantity(item.id, -1)}
+                className="bg-green-600 text-white px-4 py-2 rounded-xl"
+              >
+                –
+              </button>
 
-                <span>{item.quantity}</span>
+              <span>{item.quantity}</span>
 
-                <button
-                  onClick={() => updateQuantity(item.id, 1)}
-                  className="bg-green-600 text-white px-4 py-2 rounded-xl"
-                >
-                  +
-                </button>
-              </div>
-
+              <button
+                onClick={() => updateQuantity(item.id, 1)}
+                className="bg-green-600 text-white px-4 py-2 rounded-xl"
+              >
+                +
+              </button>
+            </div>
 
             {/* ta bort */}
-            <div className="flex items-center gap-3 mt-2">
             <button
               onClick={() => removeFromCart(item.id)}
-              className="bg-red-600 text-white px-4 py-2 rounded-xl hover:bg-red-700"
+              className="bg-red-600 text-white px-4 py-2 rounded-xl"
             >
               Ta bort
             </button>
-          </div>
           </div>
         ))}
 
@@ -128,7 +122,7 @@ export default function CartPage() {
 
       <div className="mt-8 flex justify-center gap-6">
         <Link href="/shop" className={`${buttonSecondary} w-40 text-center`}>
-          Ta mig tillbaka
+          Till butik
         </Link>
 
         <button

@@ -2,6 +2,7 @@
 
 import Hero from "@/app/components/hero";
 import { useCart } from "../cart/context/cartContext";
+import type { Product } from "../cart/context/cartContext";
 import Link from "next/link";
 import { products } from "./data/products";
 import { buttonPrimary, buttonSecondary } from "@/app/styles";
@@ -11,24 +12,16 @@ import { useState, useEffect } from "react";
 export default function ShopPage() {
   const { addToCart, cart } = useCart();
 
-  // antal per produkt (lokal state)
   const [quantities, setQuantities] = useState<Record<number, number>>({});
 
-  // färgbyte när tillagd
-  const [added, setAdded] = useState<Record<number, boolean>>({});
-
-  // synka quantities från kundvagnen
   useEffect(() => {
     const newQuantities: Record<number, number> = {};
-    const newAdded: Record<number, boolean> = {};
 
     cart.forEach((item) => {
       newQuantities[item.id] = item.quantity;
-      newAdded[item.id] = true;
     });
 
     setQuantities(newQuantities);
-    setAdded(newAdded);
   }, [cart]);
 
   function increase(id: number) {
@@ -45,15 +38,11 @@ export default function ShopPage() {
     }));
   }
 
-  function handleAdd(product: any) {
+  function handleAdd(product: Product) {
     const quantity = quantities[product.id] || 0;
 
     if (quantity > 0) {
       addToCart(product, quantity);
-      setAdded((prev) => ({
-        ...prev,
-        [product.id]: true,
-      }));
     }
   }
 
@@ -70,7 +59,7 @@ export default function ShopPage() {
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {products.map((product) => {
             const qty = quantities[product.id] || 0;
-            const isAdded = added[product.id];
+            const isInCart = cart.some((item) => item.id === product.id);
 
             return (
               <div
@@ -90,17 +79,22 @@ export default function ShopPage() {
                       className="w-full h-48 object-cover rounded-xl mb-4"
                     />
 
-                    <h3 className="text-xl font-semibold">{product.name}</h3>
+                    <h3 className="text-xl font-semibold">
+                      {product.name}
+                    </h3>
+
                     <p className="text-gray-600 flex-1">
                       {product.description}
                     </p>
-                    <p className="font-bold mt-4">{product.price} kr</p>
+
+                    <p className="font-bold mt-4">
+                      {product.price} kr
+                    </p>
                   </Link>
 
-                  {/* antal (synkat med cart) */}
+                  {/* Antal */}
                   <div className="w-full mt-6">
                     <div className="flex w-full border border-green-300 rounded-xl overflow-hidden">
-
                       <button
                         onClick={() => decrease(product.id)}
                         className="flex-1 py-2 text-green-700 hover:bg-green-100 transition"
@@ -118,20 +112,19 @@ export default function ShopPage() {
                       >
                         +
                       </button>
-
                     </div>
                   </div>
 
-                  {/* add to cart */}
+                  {/* Lägg i varukorg */}
                   <button
                     onClick={() => handleAdd(product)}
                     className={
-                      isAdded
+                      isInCart
                         ? "mt-4 bg-green-600 text-white px-4 py-2 rounded-xl"
                         : `${buttonPrimary} mt-4`
                     }
                   >
-                    {isAdded ? "Tillagd ✓" : "Lägg i varukorg"}
+                    {isInCart ? "Tillagd ✓" : "Lägg i varukorg"}
                   </button>
                 </div>
               </div>
