@@ -62,7 +62,7 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
             ? { ...item, quantity: item.quantity + amount }
             : item
         )
-        .filter((item) => item.quantity > 0)
+        .filter((item) => item.quantity > 1)
     );
   };
 

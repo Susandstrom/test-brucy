@@ -58,7 +58,7 @@ export default function ShopPage() {
       <div className="max-w-7xl mx-auto px-4 py-12">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {products.map((product) => {
-            const qty = quantities[product.id] || 0;
+            const qty = quantities[product.id] || 1;
             const isInCart = cart.some((item) => item.id === product.id);
 
             return (
