@@ -74,7 +74,7 @@ export default function CartPage() {
             <img
               src={item.image}
               alt={item.name}
-              className="w-24 h-24 object-cover rounded-xl"
+              className="w-24 h-24 object-cover rounded-2xl"
             />
 
             {/* Namn + pris */}
