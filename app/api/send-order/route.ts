@@ -13,14 +13,14 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: "No sessionId" }, { status: 400 });
     }
 
-    // 🔥 hämta kunddata från Stripe
+    // hämta kunddata från Stripe
     const session = await stripe.checkout.sessions.retrieve(sessionId);
 
     const fullName = session.customer_details?.name || "";
     const email = session.customer_details?.email || "";
     const phoneNumber = session.customer_details?.phone || "";
 
-    // 🔥 adress från customer_details (inte shipping_details)
+    // adress från customer_details (inte shipping_details)
     const addressObj = session.customer_details?.address;
 
     const address = addressObj
