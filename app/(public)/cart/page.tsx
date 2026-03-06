@@ -78,10 +78,12 @@ export default function CartPage() {
             />
 
             {/* Namn + pris */}
-            <div className="flex-1 flex items-center justify-between">
-              <h2 className="text-xl font-semibold">{item.name}</h2>
-              <p className="text-gray-600">Antal: {item.quantity}</p>
-              <p className="text-gray-800 font-bold mt-2">
+            <div className="flex-1 flex items-center">
+              <div>
+                <h2 className="text-xl font-semibold">{item.name}</h2>
+                <p className="text-gray-600">Antal: {item.quantity}</p>
+              </div>
+              <p className="ml-auto text-gray-800 font-bold">
                 {item.price * item.quantity} SEK
               </p>
             </div>

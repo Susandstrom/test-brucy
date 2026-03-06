@@ -38,22 +38,22 @@ export default function Navbar() {
             >
               Recept ▼
             </Link>
-            <div className="absolute right-0 mt-2 w-48 bg-white border rounded shadow-lg z-10 opacity-0 group-hover:opacity-100 transition">
+            <div className="absolute left-0 mt-2 w-48 bg-white border rounded shadow-lg z-10 opacity-0 group-hover:opacity-100 transition text-left">
               <Link
                 href="/recipe/biryani"
-                className="block px-4 py-2 hover:bg-gray-100 transition"
+                className="block px-4 py-2 text-left hover:bg-gray-100 transition"
               >
                 Biryani
               </Link>
               <Link
                 href="/recipe/hamburger"
-                className="block px-4 py-2 hover:bg-gray-100 transition"
+                className="block px-4 py-2 text-left hover:bg-gray-100 transition"
               >
                 Hamburger
               </Link>
               <Link
                 href="/recipe/korvstroganof"
-                className="block px-4 py-2 hover:bg-gray-100 transition"
+                className="block px-4 py-2 text-left hover:bg-gray-100 transition"
               >
                 Korvstroganof
               </Link>
@@ -105,24 +105,24 @@ export default function Navbar() {
               {dropdownOpen ? "▲ Visa underrecept" : "▼ Visa underrecept"}
             </button>
             {dropdownOpen && (
-              <div className="pl-4 flex flex-col gap-1 mt-1">
+              <div className="pl-4 flex flex-col gap-1 mt-1 text-left">
                 <Link
-                  href="/biryani"
-                  className="block px-2 py-1 hover:bg-gray-100 transition"
+                  href="/recipe/biryani"
+                  className="block px-2 py-1 text-left hover:bg-gray-100 transition"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   Biryani
                 </Link>
                 <Link
-                  href="/hamburger"
-                  className="block px-2 py-1 hover:bg-gray-100 transition"
+                  href="/recipe/hamburger"
+                  className="block px-2 py-1 text-left hover:bg-gray-100 transition"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   Hamburger
                 </Link>
                 <Link
-                  href="/korvstroganof"
-                  className="block px-2 py-1 hover:bg-gray-100 transition"
+                  href="/recipe/korvstroganof"
+                  className="block px-2 py-1 text-left hover:bg-gray-100 transition"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   Korvstroganof
