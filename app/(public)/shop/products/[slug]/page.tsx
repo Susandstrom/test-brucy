@@ -5,7 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { products } from "../../data/products";
 import { buttonPrimary, buttonSecondary, buttonThird } from "@/app/styles";
-import { useCart } from "@/app/(public)/cart/context/cartContext";
+import { useCart } from "@/app/(public)/cart/context/CartContext";
 import Hero from "@/app/components/hero";
 import { useState, useEffect } from "react";
 

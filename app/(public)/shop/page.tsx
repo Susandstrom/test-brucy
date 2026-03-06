@@ -1,8 +1,8 @@
 "use client";
 
 import Hero from "@/app/components/hero";
-import { useCart } from "../cart/context/cartContext";
-import type { Product } from "../cart/context/cartContext";
+import { useCart } from "../cart/context/CartContext";
+import type { Product } from "../cart/context/CartContext";
 import Link from "next/link";
 import { products } from "./data/products";
 import { buttonPrimary, buttonSecondary } from "@/app/styles";

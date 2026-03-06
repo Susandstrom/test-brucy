@@ -1,6 +1,6 @@
 "use client";
 
-import { useCart } from "./context/cartContext";
+import { useCart } from "./context/CartContext";
 import Link from "next/link";
 import { buttonPrimary, buttonSecondary } from "@/app/styles";
 

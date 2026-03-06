@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { buttonSecondary } from "@/app/styles";
 import { useEffect, useRef } from "react";
-import { useCart } from "../context/cartContext";
+import { useCart } from "../context/CartContext";
 
 export default function SuccessPage() {
   const { clearCart } = useCart();
