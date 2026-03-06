@@ -1,46 +1,35 @@
 "use client";
 
+import Image from "next/image";
+import Link from "next/link";
+import { useState } from "react";
 import Hero from "@/app/components/hero";
+import { buttonPrimary, buttonSecondary } from "@/app/styles";
 import { useCart } from "../cart/context/CartContext";
 import type { Product } from "../cart/context/CartContext";
-import Link from "next/link";
 import { products } from "./data/products";
-import { buttonPrimary, buttonSecondary } from "@/app/styles";
-import Image from "next/image";
-import { useState, useEffect } from "react";
 
 export default function ShopPage() {
   const { addToCart, cart } = useCart();
-
   const [quantities, setQuantities] = useState<Record<number, number>>({});
-
-  useEffect(() => {
-    const newQuantities: Record<number, number> = {};
-
-    cart.forEach((item) => {
-      newQuantities[item.id] = item.quantity;
-    });
-
-    setQuantities(newQuantities);
-  }, [cart]);
 
   function increase(id: number) {
     setQuantities((prev) => ({
       ...prev,
-      [id]: (prev[id] || 0) + 1,
+      [id]: (prev[id] ?? 1) + 1,
     }));
   }
 
   function decrease(id: number) {
     setQuantities((prev) => ({
       ...prev,
-      [id]: Math.max(0, (prev[id] || 0) - 1),
+      [id]: Math.max(1, (prev[id] ?? 1) - 1),
     }));
   }
 
   function handleAdd(product: Product) {
-    const quantity = quantities[product.id] || 0;
-
+    const cartQuantity = cart.find((item) => item.id === product.id)?.quantity ?? 1;
+    const quantity = quantities[product.id] ?? cartQuantity;
     if (quantity > 0) {
       addToCart(product, quantity);
     }
@@ -58,7 +47,8 @@ export default function ShopPage() {
       <div className="max-w-7xl mx-auto px-4 py-12">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {products.map((product) => {
-            const qty = quantities[product.id] || 1;
+            const cartQuantity = cart.find((item) => item.id === product.id)?.quantity ?? 1;
+            const qty = quantities[product.id] ?? cartQuantity;
             const isInCart = cart.some((item) => item.id === product.id);
 
             return (
@@ -79,27 +69,18 @@ export default function ShopPage() {
                       className="w-full h-48 object-cover rounded-xl mb-4"
                     />
 
-                    <h3 className="text-xl font-semibold">
-                      {product.name}
-                    </h3>
-
-                    <p className="text-gray-600 flex-1">
-                      {product.description}
-                    </p>
-
-                    <p className="font-bold mt-4">
-                      {product.price} kr
-                    </p>
+                    <h3 className="text-xl font-semibold">{product.name}</h3>
+                    <p className="text-gray-600 flex-1">{product.description}</p>
+                    <p className="font-bold mt-4">{product.price} kr</p>
                   </Link>
 
-                  {/* Antal */}
                   <div className="w-full mt-6">
                     <div className="flex w-full border border-green-300 rounded-xl overflow-hidden">
                       <button
                         onClick={() => decrease(product.id)}
                         className="flex-1 py-2 text-green-700 hover:bg-green-100 transition"
                       >
-                        –
+                        -
                       </button>
 
                       <div className="flex-1 flex items-center justify-center text-sm font-medium text-gray-800">
@@ -115,7 +96,6 @@ export default function ShopPage() {
                     </div>
                   </div>
 
-                  {/* Lägg i varukorg */}
                   <button
                     onClick={() => handleAdd(product)}
                     className={

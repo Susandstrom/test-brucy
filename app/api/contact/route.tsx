@@ -1,36 +1,43 @@
-import { EmailTemplate } from "@/app/components/email-template";
-import { Resend } from "resend";
 import { render } from "@react-email/render";
+import { createElement } from "react";
+import { Resend } from "resend";
+import { EmailTemplate } from "@/app/components/email-template";
 
-//Min API-nyckel-länk
 const resend = new Resend(process.env.RESEND_API_KEY);
 
-//POST för min mejl-funktion
+type ContactBody = {
+  name?: string;
+  email?: string;
+  message?: string;
+};
+
 export async function POST(request: Request) {
   try {
-    const body = await request.json();
+    const body = (await request.json()) as ContactBody;
     const { name, email, message } = body;
 
     if (!name || !email || !message) {
-      return Response.json({ error: "Alla fält måste fyllas i" }, { status: 400 });
+      return Response.json(
+        { error: "Alla fält måste fyllas i" },
+        { status: 400 }
+      );
     }
 
-    const html = await render(<EmailTemplate name={name} email={email} message={message} />);
+    const html = await render(
+      createElement(EmailTemplate, { name, email, message })
+    );
 
-    // skicka mailet med information
     const data = await resend.emails.send({
       from: "Grönaboken <gronaboken@resend.dev>",
-      to: ["suthada@brucy.io"], 
+      to: ["suthada@brucy.io"],
       subject: "Ny kontakt från webbformulär",
-      html, 
+      html,
     });
 
-    console.log("Mejl skickat:", data);
-
     return Response.json({ success: true, data });
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error(error);
-    return Response.json({ error: error.message || "Något gick fel" }, { status: 500 });
+    const message = error instanceof Error ? error.message : "Något gick fel";
+    return Response.json({ error: message }, { status: 500 });
   }
 }
-  

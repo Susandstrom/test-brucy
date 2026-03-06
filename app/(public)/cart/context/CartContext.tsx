@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useContext, useState, useEffect } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 
 export type Product = {
   id: number;
@@ -25,14 +25,17 @@ export type CartContextType = {
 const CartContext = createContext<CartContextType | null>(null);
 
 export function CartProvider({ children }: { children: React.ReactNode }) {
-  const [cart, setCart] = useState<CartItem[]>([]);
-
-  useEffect(() => {
+  const [cart, setCart] = useState<CartItem[]>(() => {
+    if (typeof window === "undefined") return [];
     const stored = localStorage.getItem("cart");
-    if (stored) {
-      setCart(JSON.parse(stored));
+    if (!stored) return [];
+
+    try {
+      return JSON.parse(stored) as CartItem[];
+    } catch {
+      return [];
     }
-  }, []);
+  });
 
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(cart));
@@ -41,7 +44,6 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
   const addToCart = (product: Product, quantity = 1) => {
     setCart((prev) => {
       const existing = prev.find((item) => item.id === product.id);
-
       if (existing) {
         return prev.map((item) =>
           item.id === product.id
@@ -49,7 +51,6 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
             : item
         );
       }
-
       return [...prev, { ...product, quantity }];
     });
   };
@@ -58,16 +59,14 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
     setCart((prev) =>
       prev
         .map((item) =>
-          item.id === id
-            ? { ...item, quantity: item.quantity + amount }
-            : item
+          item.id === id ? { ...item, quantity: item.quantity + amount } : item
         )
-        .filter((item) => item.quantity > 1)
+        .filter((item) => item.quantity > 0)
     );
   };
 
   const removeFromCart = (id: number) => {
-    setCart((prev) => prev.filter((item) => item.id !== item.id));
+    setCart((prev) => prev.filter((item) => item.id !== id));
   };
 
   const clearCart = () => {
