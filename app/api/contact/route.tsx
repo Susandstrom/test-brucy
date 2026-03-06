@@ -34,6 +34,13 @@ export async function POST(request: Request) {
       html,
     });
 
+    await resend.emails.send({
+      from: "Grönaboken <gronaboken@resend.dev>",
+      to: [email],
+      subject: "Tack för ditt meddelande",
+      html,
+    });
+
     return Response.json({ success: true, data });
   } catch (error: unknown) {
     console.error(error);
