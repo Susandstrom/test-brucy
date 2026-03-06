@@ -33,8 +33,9 @@ export default function ProductPage() {
     );
   }
 
+  const selectedProduct = product;
   const quantity = manualQuantity ?? existingQuantity ?? 1;
-  const isInCart = cart.some((item) => item.id === product.id);
+  const isInCart = cart.some((item) => item.id === selectedProduct.id);
 
   function increase() {
     setManualQuantity(quantity + 1);
@@ -46,7 +47,7 @@ export default function ProductPage() {
 
   function handleAddToCart() {
     if (quantity > 0) {
-      addToCart(product, quantity);
+      addToCart(selectedProduct, quantity);
     }
   }
 
@@ -75,11 +76,11 @@ export default function ProductPage() {
         <div className="md:w-1/2 bg-white rounded-2xl shadow-md p-6 flex flex-col h-[400px]">
           <div>
             <h2 className="text-3xl font-bold mb-2">{product.name}</h2>
-            <p className="text-gray-500">{product.description}</p>
+            <p className="text-gray-500">{selectedProduct.description}</p>
           </div>
 
           <div className="flex flex-col items-center justify-end mt-auto mb-4">
-            <p className="text-2xl font-bold">{product.price} kr</p>
+            <p className="text-2xl font-bold">{selectedProduct.price} kr</p>
 
             <div className="w-full mt-4">
               <div className="flex w-full border border-green-300 rounded-xl overflow-hidden">
